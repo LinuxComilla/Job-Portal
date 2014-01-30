@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Jobs Finder-Signup</title>
+</head>
+
+<body>
+<center>
+<div class="nav">
+<center>
+<div class="header">
+    <div class="navbar home" id="drop"><span id="shift" style="color:black"><a href="/">Home</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/signup/">Job Seeker Login</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/resumeservice/">Resume Services</a></span></div>
+    <div class="navbar recruiter" id="drop"><span id="shift" style="color:black"><a href="/edit_profile/">Post Resume</a></span></div>
+    <div class="navbar search_job" id="drop"><span id="shift" style="color:black"><a href="/searchjob/">Search Jobs</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/recruiter/">Employer Login</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/postjob/">Post a Job</a></span></div>
+    <div class="navbar last" id="drop"><span id="shift" style="color:black"><a href="/buyonline/">Buy Online</a></span></div>
+</div>
+</center>
+<div class="error">
+<p style="color:red">{% if condition %}{{ condition }}{% else %}Email id already exists.{% endif %}</p><p> <a href="/recruiter/">click here for login or register again.</a></p>
+</div>
+<style>
+.nav {
+	width:83.6em;
+	height:2.9em;
+	background: rgba(76,76,76,1);
+background: rgba(210,255,82,1);
+background: -moz-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(210,255,82,1)), color-stop(43%, rgba(210,255,82,1)), color-stop(100%, rgba(145,232,66,1)));
+background: -webkit-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: -o-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: -ms-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: linear-gradient(to bottom, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+border-bottom: 5px solid orange;
+}
+.navbar:hover {
+        box-shadow:0 0 0 0 ;
+}
+.navbar {
+        box-shadow:0 0 5px rgba(0,0,0,0.8);
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    display: inline-block;
+    position:relative;
+    width: 10em;
+    height: 2em;
+    margin-left: 2px;
+    font-size:12px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+.header {
+        position:relative;
+	top:1em;
+}
+.last {
+    border-right: 1px solid black;
+}
+#shift {
+    position:relative;
+    top:0.5em;
+}
+.error {
+    display: inline-block;
+    position:relative;
+    top:10em;
+    background-color:#cdcdcd;
+    border-radius: 5px;
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+</style>
+</body>
+</html>

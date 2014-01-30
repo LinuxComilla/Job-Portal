@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Jobs Finder-Signup</title>
+</head>
+
+<body>
+<center>
+<div class="nav">
+<center>
+<div class="header">
+    <div class="navbar home" id="drop"><span id="shift" style="color:black"><a href="/">Home</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/signup/">Job Seeker Login</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/resumeservice/">Resume Services</a></span></div>
+    <div class="navbar recruiter" id="drop"><span id="shift" style="color:black"><a href="/edit_profile/">Post Resume</a></span></div>
+    <div class="navbar search_job" id="drop"><span id="shift" style="color:black"><a href="/searchjob/">Search Jobs</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/recruiter/">Employer Login</a></span></div>
+    <div class="navbar job" id="drop"><span id="shift" style="color:black"><a href="/postjob/">Post a Job</a></span></div>
+    <div class="navbar last" id="drop"><span id="shift" style="color:black"><a href="/buyonline/">Buy Online</a></span></div>
+</div>
+</center>
+</div>
+<div><h2>Search Results</h2></div>
+<div class="first">
+{% if result %}
+{% for x in result %}
+<div class="second">
+<hr class="style-five">
+<table>
+<th colspan="3"><span class="align">{{ x.name }}</span></th>
+<tr>
+<td>Current Designation: {{ x.title|default:"Not Mentioned or Not working yet"|title }}</td><td>Current Company: {{ x.company|default:"Not Mentioned or Not working yet" }}</td>
+</tr>
+<tr>
+<td>Current Location: {{ x.location|default:"Not Mentioned"|title }}</td><td>Experience: {{ x.exp|default_if_none:"Not Mentioned" }} years</td>
+</tr>
+<tr>
+<td>Highest Qualification: {{ x.qualification|default:"Not Mentioned or Not working yet"|title }}</td><td>Salary: {{ x.minsalary|default_if_none:"Not Mentioned" }}</td>
+</tr>
+</table>
+<hr class="style-five">
+</div>
+{% endfor %}
+{% else %}
+No results found matching your query
+{% endif %}
+</div>
+
+<div class="end_bar">
+<center>
+    <div class="ending"><a href="#">Feedback</a></div>
+    <div class="ending"><a href="#">FAQ</a></div>
+    <div class="ending"><a href="#">About us</a></div>
+    <div class="ending"><a href="#">Contact us</a></div>
+    <div class="ending"><a href="#">Privacy Policy</a></div>
+    <div class="ending"><a href="#">Security Advice</a></div>
+    <div class="ending"><a href="#">Terms & Condition</a></div>
+    <div class="ending lasting"><a href="#">Disclaimer</a></div>
+</center>
+</div>
+
+
+</center>
+<style>
+td {
+    width:30em;
+}
+.align {
+    text-align: left;
+}
+.first {
+    border:1px solid orange;
+    border-radius:5px;
+    width:63em;
+}
+.second {
+    border-radius:5px;
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 6%, rgba(237,237,237,1) 10%, rgba(255,255,255,1) 14%, rgba(237,237,237,1) 18%, rgba(237,237,237,1) 22%, rgba(255,255,255,1) 27%, rgba(237,237,237,1) 35%, rgba(237,237,237,1) 38%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 53%, rgba(237,237,237,1) 60%, rgba(255,255,255,1) 62%, rgba(237,237,237,1) 70%, rgba(237,237,237,1) 81%, rgba(255,255,255,1) 87%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(6%, rgba(237,237,237,1)), color-stop(10%, rgba(237,237,237,1)), color-stop(14%, rgba(255,255,255,1)), color-stop(18%, rgba(237,237,237,1)), color-stop(22%, rgba(237,237,237,1)), color-stop(27%, rgba(255,255,255,1)), color-stop(35%, rgba(237,237,237,1)), color-stop(38%, rgba(237,237,237,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(53%, rgba(237,237,237,1)), color-stop(60%, rgba(237,237,237,1)), color-stop(62%, rgba(255,255,255,1)), color-stop(70%, rgba(237,237,237,1)), color-stop(81%, rgba(237,237,237,1)), color-stop(87%, rgba(255,255,255,1)), color-stop(94%, rgba(237,237,237,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 6%, rgba(237,237,237,1) 10%, rgba(255,255,255,1) 14%, rgba(237,237,237,1) 18%, rgba(237,237,237,1) 22%, rgba(255,255,255,1) 27%, rgba(237,237,237,1) 35%, rgba(237,237,237,1) 38%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 53%, rgba(237,237,237,1) 60%, rgba(255,255,255,1) 62%, rgba(237,237,237,1) 70%, rgba(237,237,237,1) 81%, rgba(255,255,255,1) 87%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 6%, rgba(237,237,237,1) 10%, rgba(255,255,255,1) 14%, rgba(237,237,237,1) 18%, rgba(237,237,237,1) 22%, rgba(255,255,255,1) 27%, rgba(237,237,237,1) 35%, rgba(237,237,237,1) 38%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 53%, rgba(237,237,237,1) 60%, rgba(255,255,255,1) 62%, rgba(237,237,237,1) 70%, rgba(237,237,237,1) 81%, rgba(255,255,255,1) 87%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 6%, rgba(237,237,237,1) 10%, rgba(255,255,255,1) 14%, rgba(237,237,237,1) 18%, rgba(237,237,237,1) 22%, rgba(255,255,255,1) 27%, rgba(237,237,237,1) 35%, rgba(237,237,237,1) 38%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 53%, rgba(237,237,237,1) 60%, rgba(255,255,255,1) 62%, rgba(237,237,237,1) 70%, rgba(237,237,237,1) 81%, rgba(255,255,255,1) 87%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 6%, rgba(237,237,237,1) 10%, rgba(255,255,255,1) 14%, rgba(237,237,237,1) 18%, rgba(237,237,237,1) 22%, rgba(255,255,255,1) 27%, rgba(237,237,237,1) 35%, rgba(237,237,237,1) 38%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 53%, rgba(237,237,237,1) 60%, rgba(255,255,255,1) 62%, rgba(237,237,237,1) 70%, rgba(237,237,237,1) 81%, rgba(255,255,255,1) 87%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+}
+.nav {
+	width:83.6em;
+	height:2.9em;
+	background: rgba(76,76,76,1);
+background: rgba(210,255,82,1);
+background: -moz-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(210,255,82,1)), color-stop(43%, rgba(210,255,82,1)), color-stop(100%, rgba(145,232,66,1)));
+background: -webkit-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: -o-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: -ms-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+background: linear-gradient(to bottom, rgba(210,255,82,1) 0%, rgba(210,255,82,1) 43%, rgba(145,232,66,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+border-bottom: 5px solid orange;
+}
+.navbar:hover {
+        box-shadow:0 0 0 0 ;
+}
+.navbar {
+        box-shadow:0 0 5px rgba(0,0,0,0.8);
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    display: inline-block;
+    position:relative;
+    width: 10em;
+    height: 2em;
+    margin-left: 2px;
+    font-size:12px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+.header {
+        position:relative;
+	top:1em;
+}
+.last {
+    border-right: 1px solid black;
+}
+#shift {
+    position:relative;
+    top:0.5em;
+}
+a {
+    text-decoration:none;
+    color:black;
+}
+a:hover {
+    text-decoration:underline;
+}
+hr.style-five {
+    border: 0;
+    height: 0; /* Firefox... */
+    box-shadow: 0 0 10px 1px black;
+}
+hr.style-five:after {  /* Not really supposed to work, but does */
+    content: "\00a0";  /* Prevent margin collapse */
+}
+.end_bar {
+    background-color:#a8a8a8;
+    height: 3em;
+    width:83.6em;
+    border-top:1px solid black;
+    margin-top: 29.7em;
+}
+.ending {
+    display: inline-block;
+    border-right:1px solid black;
+    width:10em;
+    position: relative;
+    top: 1em;
+}
+.lasting {
+    border-right: 0px none;
+}
+</style>
+</body>
+</html>

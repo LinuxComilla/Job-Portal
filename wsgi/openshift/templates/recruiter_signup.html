@@ -1,0 +1,618 @@
+<html>
+<head>
+<title>Jobs Finder-login</title>
+</head>
+<body>
+<center>
+<div class="nav">
+<table>
+<tr>
+<td><div class="design" id="one"></div></td>
+<td><div class="design" id="two"></div></td>
+<td><div class="design" id="three"></div></td>
+<td><div class="design" id="four"></div></td>
+<td><div class="design" id="five"></div></td>
+<td><div class="design" id="six"></div></td>
+<td><div class="design" id="seven"></div></td>
+<td><div class="design" id="eight"></div></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="header" onmouseover="changecolor()" onmouseout="changecolorreset()"><span class="down"><a href="/">Home</a></span></td>
+<td class="headerone" onmouseover="changecolorseven()" onmouseout="changecolorresetseven()"><span class="down"><a href="/signup/">Job Seeker Login</a></span></td>
+<td class="headertwo" onmouseover="changecolorone()" onmouseout="changecolorresetone()"><span class="down"><a href="/resumeservice/">Resume Search</a></span></td>
+<td class="headerthree" onmouseover="changecolortwo()" onmouseout="changecolorresettwo()"><span class="down"><a href="/edit_profile/">Post Resume</a></span></td>
+<td class="headerfour" onmouseover="changecolorthree()" onmouseout="changecolorresetthree()"><span class="down"><a href="/searchjob/">Search Jobs</a></span></td>
+<td class="headerfive" onmouseover="changecolorfour()" onmouseout="changecolorresetfour()"><span class="down"><a href="/recruiter/">Employer Login</a></span></td>
+<td class="headersix" onmouseover="changecolorfive()" onmouseout="changecolorresetfive()"><span class="down"><a href="/postjob/">Post a Job</a></span></td>
+<td class="headerseven" onmouseover="changecolorsix()" onmouseout="changecolorresetsix()"><span class="down"><a href="/buyonline/">Buy Online</a></span></td>
+</tr>
+</table>
+</div>
+<div class="condition"><span style="color:red">{% block condition %}{% if condition %} {{ condition }} {% endif %}{% endblock %}</span></div>
+
+
+<div class="main">
+<form action="/rlogin/" method="post" name="Form" onsubmit="return(ValidateForm())">{% csrf_token %}
+<table>
+<th><div class="arrow_box"><span class="set"><b>Sign In</b></span></div></th>
+<tr>
+<td><input type="text" class="checkemail" name="email" placeholder="Email" onblur="alidate(document.Form.email)"/></td>
+<td><input type="password" class="checkpasswd" name="passwd" placeholder="Password" onblur="CheckPasswd(document.Form.passwd)"/></td>
+<td><input type="submit" class="logintab" value="Login" /></td>
+</tr>
+<tr>
+<td><span style="color:red;font-size:15px;" id="verify">Enter correct email address</span></td>
+<td><span style="color:red;font-size:15px;" id="hiddenalert">Enter correct password</span></td>
+<td><p id="forgot1"><a href="/rforgot/" id="forgot">Forgot Password?</a></p></td>
+</tr>
+</table>
+</form>
+</div>
+
+<div class="anothermain">
+<form action="/rregister/" method="post" name="myForm" onsubmit="return(validateform())">{% csrf_token %}
+<table>
+<th><div class="arrow_box"><span class="set"><b>Register</b></span></div></th>
+<tr>
+<td><input class="form-size" type="text" name="company" onblur="checkcompany()" placeholder="Enter Company Name"/></td>
+<td><input class="form-size" type="text" name="contact" onblur="checkcontact()" placeholder="Enter Contact Name"/></td>
+</tr>
+<tr>
+<td><span id="provid" style="color:red">Company Name is required</span></td>
+<td><span id="provi" style="color:red">Contact Name is required</span></td>
+</tr>
+<tr>
+<td><input class="form-size" type="text" name="emailid" onblur="validate(document.myForm.emailid)" placeholder="Enter email address"/></td>
+<td><input class="form-size" type="text" name="website" onblur="Validate(document.myForm.website)" placeholder="Enter Website"/></td>
+</tr>
+<tr>
+<td><span id="provide" style="color:red">Enter correct email</span></td>
+<td><span id="prov" style="color:red">Enter correct website( use http(s):// )</span></td>
+</tr>
+<tr>
+<td><input class="form-size" type="text" name="location" onblur="checklocation(document.myForm.location)" placeholder="Enter Current Location"/></td>
+<td><input class="form-size" type="password" name="passwd" onblur="CheckPassword(document.myForm.passwd)" placeholder="Enter Password" id="passwrd"/></td>
+</tr>
+<tr>
+<td><span id="pro" style="color:red">Location is Required</span></td>
+</tr>
+<tr>
+<td><input class="form-size" type="password" name="confirm_passwd" onblur="confirmPasswd()" placeholder="Confirm Password" id="confirmpasswrd"/></td>
+<td><input class="form-size" name = "countrycode" id="extra" type="text" value="91" maxlength="3"/><input class="form-size" id="mobile" type="text" name="mobile_no" placeholder="Enter Mobile Number" maxlength="10" onblur="phonenumber()"/></td>
+</tr>
+<tr>
+<td><span id="providet" style="color:red">Password does not match</span></td>
+<td><span id="provideg" style="color:red">Enter correct mobile number.</span></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="agree" onblur="agreement()"/><b>I agree to the</b><a href="#" target="blank">Terms & Conditions</a></td>
+</tr>
+<tr>
+<td><span id="provido" style="color:red">Please agree to the agreement</span></td>
+</tr>
+<tr>
+<td><input class="submit_sign" type="submit" value="Sign Up"/></td>
+</tr>
+</table>
+</form>
+</div>
+
+
+
+<div class="endbar">
+<table>
+<tr>
+<td class="ending"><span class="flist"><a href="#">Feedback</a></span></td>
+<td class="ending"><span class="flist"><a href="#">FAQ</a></span></td>
+<td class="ending"><span class="flist"><a href="#">About us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Contact us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Privacy Policy</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Security Advice</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Terms & Condition</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Disclaimer</a></span></td>
+</tr>
+</table>
+</div>
+
+
+</center>
+
+<style>
+.header:hover,.headerone:hover,.headertwo:hover,.headerthree:hover,.headerfour:hover,.headerfive:hover,.headersix:hover,.headerseven:hover {
+    box-shadow: 0 0 0 0 ;
+}
+.design {
+    height:0.5em;
+    background:none;
+}
+.header,.headerone,.headertwo,.headerthree,.headerfour,.headerfive,.headersix,.headerseven {
+    text-decoration:none;
+    list-style-type:none;
+    display:inline-block;
+    width: 10em;
+    font-size: 12px;
+    text-align: center;
+    border-top:1px solid black;
+    border-left:1px solid black;
+    border-right:1px solid black;
+    border-radius:5px;
+    box-shadow:0 0 5px rgba(0,0,0,0.8);
+    height:1.7em;
+    position:relative;
+}
+body {
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(14%, rgba(237,237,237,1)), color-stop(30%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(53%, rgba(255,255,255,1)), color-stop(61%, rgba(237,237,237,1)), color-stop(85%, rgba(255,255,255,1)), color-stop(94%, rgba(237,237,237,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+a:hover {
+    text-decoration:underline;
+}
+.nav {
+    position:relative;
+    top:-0.9em;
+    border-bottom: 3px solid brown;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+}
+.arrow_box {
+    position: relative;
+    background: #88b7d5;
+    border: 4px solid #c2e1f5;
+    height:1.5em;
+    width:5em;
+}
+.arrow_box:after, .arrow_box:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.arrow_box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-left-color: #88b7d5;
+    border-width: 11px;
+    margin-top: -11px;
+}
+.arrow_box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-left-color: #c2e1f5;
+    border-width: 17px;
+    margin-top: -17px;
+}
+.condition {
+    position: relative;
+    top:1em;
+    display:inline-block;
+    background-color: yellow;
+}
+.checkemail {
+    height:2em;
+    width:17em;
+}
+.checkpasswd {
+    height:2em;
+    width:17em;
+}
+.logintab {
+    font-size:15px;
+}
+#forgot {
+    font-size: 12px;
+    position: relative;
+    right:0px;
+}
+#verify,#hiddenalert {
+    display:none;
+}
+.main {
+    position:relative;
+    top:4em;
+}
+#providet,#provido,#provideg,#provider,#pro,#prov,#provi,#provid,#provide {
+    display:none;
+}
+.form-size {
+    width:18em;
+    height:2.3em;
+    font-size: 15px;
+}
+#extra {
+    width: 2.4em;
+}
+#mobile {
+    width:15.6em;
+}
+.anothermain {
+    position:relative;
+    top:6em;
+    right:0.4em;
+}
+.ending {
+    width:8em;
+    text-align:center;
+}
+.flist {
+    font-size:12px;
+    position:relative;
+    top:0.5em;
+}
+.endbar {
+    border-top:1px solid black;
+    height:2em;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+position:relative;
+top:13em;
+}
+</style>
+<script>
+function changecolor() {
+    document.getElementById("one").style.background="brown";
+}
+function changecolorreset() {
+    document.getElementById("one").style.background="none";
+}
+function changecolorseven() {
+    document.getElementById("two").style.background="brown";
+}
+function changecolorresetseven() {
+    document.getElementById("two").style.background="none";
+}
+function changecolorone() {
+    document.getElementById("three").style.background="brown";
+}
+function changecolorresetone() {
+    document.getElementById("three").style.background="none";
+}
+function changecolortwo() {
+    document.getElementById("four").style.background="brown";
+}
+function changecolorresettwo() {
+    document.getElementById("four").style.background="none";
+}
+function changecolorthree() {
+    document.getElementById("five").style.background="brown";
+}
+function changecolorresetthree() {
+    document.getElementById("five").style.background="none";
+}
+function changecolorfour() {
+    document.getElementById("six").style.background="brown";
+}
+function changecolorresetfour() {
+    document.getElementById("six").style.background="none";
+}
+function changecolorfive() {
+    document.getElementById("seven").style.background="brown";
+}
+function changecolorresetfive() {
+    document.getElementById("seven").style.background="none";
+}
+function changecolorsix() {
+    document.getElementById("eight").style.background="brown";
+}
+function changecolorresetsix() {
+    document.getElementById("eight").style.background="none";
+}
+function alidate(email)
+    {
+        if(email.value == "")
+    {
+	document.getElementById("verify").style.display="inline-block";
+        return false;
+    }
+    else
+    {
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if(email.value.match(mailformat))
+	{
+	    document.getElementById("verify").style.display="none";
+	    return true;
+	}
+	else
+	{
+	    document.getElementById("verify").style.display="inline-block";
+	    document.myForm.emailid.value="";
+	    return false;
+	}
+    }
+    }
+function CheckPasswd(passwd)
+    {
+        var passwdformat=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+	if(passwd.value == "")
+	{
+		document.getElementById("hiddenalert").style.display="inline-block";
+		return false;
+	}
+	else
+	{
+	if(passwd.value.match(passwdformat))
+	{
+		document.getElementById("hiddenalert").style.display="none";
+		return true;
+	}
+	else
+	{
+		document.getElementById("hiddenalert").style.display="inline-block";
+		document.Form.passwd.value="";
+		return false;
+	}
+	}
+    }
+function ValidateForm()
+    {
+        if(document.Form.email.value=="")
+	{
+	    document.getElementById("verify").style.display="inline-block";
+	    return false;
+	}
+	else if(document.Form.passwd.value=="")
+	{
+	    document.getElementById("hiddenalert").style.display="inline-block";
+	    return false;
+	}
+	else
+	{
+	    return true;
+	}
+    }
+function validate(email)
+{
+    if(email.value == "")
+    {
+	document.getElementById("provide").style.display="inline-block";
+        return false;
+    }
+    else
+    {
+	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if(email.value.match(mailformat))
+	{
+	    document.getElementById("provide").style.display="none";
+	    return true;
+	}
+	else
+	{
+	    document.getElementById("provide").style.display="inline-block";
+	    document.myForm.emailid.value="";
+	    return false;
+	}
+    }
+}
+function Validate(website)
+{
+    if(website.value == "")
+    {
+	document.getElementById("prov").style.display="inline-block";
+	return false;
+    }
+    else
+    {
+        var webformat = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	if(website.value.match(webformat))
+	{
+	    document.getElementById("prov").style.display="none";
+	    return true;
+	}
+	else
+	{
+	    document.getElementById("prov").style.display="inline-block";
+	    document.myForm.website.value="";
+	    return false;
+	}
+    }
+}
+function CheckPassword(passwd)
+    {
+	var passwdformat=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+	if(passwd.value == "")
+	{
+		alert("Password should be 6 to 20 characters long,\ncontains at least one numeric digit,\n one uppercase and one lowercase letter");
+		return false;
+	}
+	else
+	{
+	if(passwd.value.match(passwdformat))
+	{
+		return true;
+	}
+	else
+	{
+		alert("Password should be 6 to 20 characters long,\ncontains at least one numeric digit,\n one uppercase and one lowercase letter");
+		document.myForm.passwd.focus();
+		document.myForm.passwd.value="";
+		return false;
+	}
+	}
+    }
+function confirmPasswd() {
+	if(document.getElementById("confirmpasswrd").value=="")
+	{
+		document.getElementById("providet").style.display="inline-block";
+		return false;
+	}
+	else
+	{
+	if(document.getElementById("passwrd").value != document.getElementById("confirmpasswrd").value)
+	{
+		document.getElementById("providet").style.display="inline-block";
+		document.myForm.confirm_passwd.focus();
+		document.myForm.confirm_passwd.value="";
+		return false;
+	}
+	else
+	{
+	    document.getElementById("providet").style.display="none";
+	    return true;
+	}
+	}
+    }
+function phonenumber()
+    {
+	var x = document.myForm.mobile_no.value;
+	if(x=="")
+	{
+		document.getElementById("provideg").style.display="inline-block";
+		return false;
+	}
+	else
+	{
+	if(isNaN(x)||x.indexOf(" ")!=-1 || x.length!=10)
+	
+	{
+		document.getElementById("provideg").style.display="inline-block";
+	        document.myForm.mobile_no.focus();
+	        document.myForm.mobile_no.value="";
+		return false;
+	}
+	else
+	{
+		document.getElementById("provideg").style.display="none";
+		return true;
+	}
+	}
+    }
+function validateform()
+    {
+    if(document.myForm.emailid.value=="")
+    {
+	document.getElementById("provide").style.display="inline-block";
+	return false;
+    }
+    else if(document.myForm.website.value=="")
+    {
+	document.getElementById("prov").style.display="inline-block";
+	return false;
+    }
+    else if(document.myForm.passwd.value=="")
+    {
+	alert("Password should be 6 to 20 characters long,\ncontains at least one numeric digit,\n one uppercase and one lowercase letter");
+	return false;
+    }
+    else if(document.getElementById("confirmpasswrd").value=="")
+    {
+	document.getElementById("providet").style.display="inline-block";
+	return false;
+    }
+    else if(document.myForm.mobile_no.value=="")
+    {
+	document.getElementById("provideg").style.display="inline-block";
+	return false;
+    }
+    else if(document.myForm.agree.checked != 1)
+    {
+	document.getElementById("provido").style.display="inline-block";
+	return false;
+    }
+    else if(document.myForm.location.value=="")
+    {
+	document.getElementById("pro").style.display="inline-block";
+	return false;
+    }
+    else if(document.myForm.company.value=="")
+    {
+	document.getElementById("provid").style.display="inline-block";
+	return false;
+    }
+    else if(document.myForm.contact.value=="")
+    {
+	document.getElementById("provi").style.display="inline-block";
+	return false;
+    }
+    else
+    {
+	return true;
+    }
+    }
+function agreement()
+    {
+        if(document.myForm.agree.checked != 1)
+	{
+	    document.getElementById("provido").style.display="inline-block";
+	    return false;
+	}
+	else
+	{
+	    document.getElementById("provido").style.display="none";
+	    return true;
+	}
+    }
+function checkcompany()
+    {
+	if(document.myForm.company.value=="")
+        {
+	    document.getElementById("provid").style.display="inline-block";
+	    return false;
+	}
+	else
+	{
+	    document.getElementById("provid").style.display="none";
+	    return true;
+	}
+    }
+function checkcontact()
+    {
+	if(document.myForm.contact.value=="")
+        {
+	    document.getElementById("provi").style.display="inline-block";
+	    return false;
+	}
+	else
+	{
+	    document.getElementById("provi").style.display="none";
+	    return true;
+	}
+    }
+function checklocation(location)
+    {
+	if(document.myForm.location.value=="")
+        {
+	    document.getElementById("pro").style.display="inline-block";
+	    return false;
+        }
+	else
+	{
+	    document.getElementById("pro").style.display="none";
+	    return true;
+	}
+    }
+</script>
+</body>
+</html>

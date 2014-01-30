@@ -1,0 +1,428 @@
+{% load static %}
+<html>
+<head>
+<title>Jobs Finder-login</title>
+</head>
+<body>
+<center>
+<div class="nav">
+<table>
+<tr>
+<td><div class="design" id="one"></div></td>
+<td><div class="design" id="two"></div></td>
+<td><div class="design" id="three"></div></td>
+<td><div class="design" id="four"></div></td>
+<td><div class="design" id="five"></div></td>
+<td><div class="design" id="six"></div></td>
+<td><div class="design" id="seven"></div></td>
+<td><div class="design" id="eight"></div></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="header" onmouseover="changecolor()" onmouseout="changecolorreset()"><span class="down"><a href="/">Home</a></span></td>
+<td class="headerone" onmouseover="changecolorseven()" onmouseout="changecolorresetseven()"><span class="down"><a href="/signup/">Job Seeker Login</a></span></td>
+<td class="headertwo" onmouseover="changecolorone()" onmouseout="changecolorresetone()"><span class="down"><a href="/resumeservice/">Resume Search</a></span></td>
+<td class="headerthree" onmouseover="changecolortwo()" onmouseout="changecolorresettwo()"><span class="down"><a href="/edit_profile/">Post Resume</a></span></td>
+<td class="headerfour" onmouseover="changecolorthree()" onmouseout="changecolorresetthree()"><span class="down"><a href="/searchjob/">Search Jobs</a></span></td>
+<td class="headerfive" onmouseover="changecolorfour()" onmouseout="changecolorresetfour()"><span class="down"><a href="/recruiter/">Employer Login</a></span></td>
+<td class="headersix" onmouseover="changecolorfive()" onmouseout="changecolorresetfive()"><span class="down"><a href="/postjob/">Post a Job</a></span></td>
+<td class="headerseven" onmouseover="changecolorsix()" onmouseout="changecolorresetsix()"><span class="down"><a href="/buyonline/">Buy Online</a></span></td>
+</tr>
+</table>
+</div>
+
+<div class="comapny">
+    <table>
+	<th colspan="5" class="top_companies">Top Companies</th>
+	<tr><td class="list_companies"><img class="comp" src="{% static "assets/images/convergys.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/exl.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/infosys.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/axon.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/deloitte.gif" %}" /></td></tr>
+	<tr><td class="list_companies"><img class="comp" src="{% static "assets/images/airtel.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/qualcomm.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/amity.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/mphasis.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/ustglobal.gif" %}" /></td></tr>
+	<tr><td class="list_companies"><img class="comp" src="{% static "assets/images/lnt.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/mphasis.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/ibm.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/virtusa.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/larsen.gif" %}" /></td></tr>
+	<tr><td class="list_companies"><img class="comp" src="{% static "assets/images/utc.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/mcafee.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/wipro.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/techmahindra.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/tata.gif" %}" /></td></tr>
+	<tr><td class="list_companies"><img class="comp" src="{% static "assets/images/meil.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/virtusa.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/indus.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/altisource.gif" %}" /></td></tr>
+	    <tr><td class="list_companies"><img class="comp" src="{% static "assets/images/msnlabs.gif" %}" /></td></tr>
+    </table>
+</div>
+<div class="another">
+<div class="browse">
+<table>
+<th colspan="2" class="browsing">Browse Jobs</th>
+<tr>
+<td>
+By Functional Area
+<ul>
+<li><a href="#">Engineering</a></li>
+<li><a href="#">Marketing/Advertising</a></li>
+<li><a href="#">IT-Software Jobs</a></li>
+<li><a href="#">HR/Recruitment Jobs</a></li>
+<li><a href="#">Graphic Design/Web Design</a></li>
+<li><a href="#">Finance/Accounts</a></li>
+<li><a href="#">Architecture/Interior Design Jobs</a></li>
+<li><a href="#">Medical/Health Care Jobs</a></li>
+<li><a href="#">Oil & Gas Engineering Jobs</a></li>
+<li><a href="#">Journalism/Content Writing</a></li>
+<li><a href="#">Education/Training</a></li>
+<li><a href="#">Other Jobs</a></li>
+</ul>
+</td>
+<td>
+By Industry
+<ul>
+<li><a href="#">IT/Software Jobs</a></li>
+<li><a href="#">BPO/Call Centre Jobs</a></li>
+<li><a href="#">Pharma/Biotech Jobs</a></li>
+<li><a href="#">Hotel/Restaurant Jobs</a></li>
+<li><a href="#">Automobile Jobs</a></li>
+<li><a href="#">Manufacturing Jobs</a></li>
+<li><a href="#">Retail Jobs</a></li>
+<li><a href="#">Telecom Jobs</a></li>
+<li><a href="#">Travel/Tourism Jobs</a></li>
+<li><a href="#">IT-Hardware/Networking Jobs</a></li>
+<li><a href="#">Bank Jobs</a></li>
+<li><a href="#">Other Jobs</a></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+
+
+<div class="anotheri">
+    <table>
+	<th colspan="3" class="latest_one"><b><center>Latest Companies</center></b></th>
+	<tr><td><b>IT-Software</b></td><td><b>Banking/Financial Services</b></td><td><b>BPO/Call Center</b></td></tr>
+	<tr>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">TCS</a></li>
+		    <li><a href="#">Wipro</a></li>
+		</ul>
+	    </td>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">Bank of India</a></li>
+		    <li><a href="#">Punjab National Bank</a></li>
+		    <li><a href="#">United Bank</a></li>
+		    <li><a href="#">Bank of Baroda</a></li>
+		</ul>
+	    </td>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">Vodafone</a></li>
+		    <li><a href="#">Airtel</a></li>
+		    <li><a href="#">Unitech</a></li>
+		</ul>
+	    </td>
+	</tr>
+	<tr><td><b>Engineering/Training</b></td><td><b>Hospitality/Travel</b></td><td><b>Health Care/Pharma</b></td></tr>
+	<tr>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">Larsen & Turbo</a></li>
+		    <li><a href="#">Tech Mahindra</a></li>
+		    <li><a href="#">Oracle</a></li>
+		</ul>
+	    </td>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">ITC Hotel</a></li>
+		    <li><a href="#">Taj Hotel</a></li>
+		    <li><a href="#">Vayama</a></li>
+		</ul>
+	    </td>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">Apotex</a></li>
+		    <li><a href="#">Baxter</a></li>
+		    <li><a href="#">Biocon</a></li>
+		    <li><a href="#">Cadiala Pharma</a></li>
+		</ul>
+	    </td>
+	</tr>
+	<tr><td><b>IT-Software</b></td><td><b>Banking/Financial Services</b></td><td><b>BPO/Call Center</b></td></tr>
+	<tr>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">TCS</a></li>
+		    <li><a href="#">Wipro</a></li>
+		</ul>
+	    </td>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">Bank of India</a></li>
+		    <li><a href="#">Punjab National Bank</a></li>
+		    <li><a href="#">United Bank</a></li>
+		    <li><a href="#">Bank of Baroda</a></li>
+		</ul>
+	    </td>
+	    <td class="latest">
+		<ul>
+		    <li><a href="#">Vodafone</a></li>
+		    <li><a href="#">Airtel</a></li>
+		    <li><a href="#">Unitech</a></li>
+		</ul>
+	    </td>
+	</tr>
+    </table>
+</div>
+
+<div class="two_div connect">
+<table>
+    <tr>
+    <td class="like"><a href="#"><img class="connecting" src="{% static "assets/images/facebook.jpg" %}" /></a></td>
+    <td class="like"><a href="#"><img class="connecting" src="{% static "assets/images/twitter.jpg" %}" /></a></td>
+    <td class="like"><a href="#"><img class="connecting" src="{% static "assets/images/google+.jpg" %}" /></a></td>
+    <td class="like"><a href="#"><img class="connecting" src="{% static "assets/images/linkedin.jpg" %}" /></a></td>
+    </tr>
+</table>
+</div>
+
+
+
+</div>
+<div class="endbar">
+<table>
+<tr>
+<td class="ending"><span class="flist"><a href="#">Feedback</a></span></td>
+<td class="ending"><span class="flist"><a href="#">FAQ</a></span></td>
+<td class="ending"><span class="flist"><a href="#">About us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Contact us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Privacy Policy</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Security Advice</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Terms & Condition</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Disclaimer</a></span></td>
+</tr>
+</table>
+</div>
+
+</center>
+
+<style>
+.header:hover,.headerone:hover,.headertwo:hover,.headerthree:hover,.headerfour:hover,.headerfive:hover,.headersix:hover,.headerseven:hover {
+    box-shadow: 0 0 0 0 ;
+}
+.design {
+    height:0.5em;
+    background:none;
+}
+.header,.headerone,.headertwo,.headerthree,.headerfour,.headerfive,.headersix,.headerseven {
+    text-decoration:none;
+    list-style-type:none;
+    display:inline-block;
+    width: 10em;
+    font-size: 12px;
+    text-align: center;
+    border-top:1px solid black;
+    border-left:1px solid black;
+    border-right:1px solid black;
+    border-radius:5px;
+    box-shadow:0 0 5px rgba(0,0,0,0.8);
+    height:1.7em;
+    position:relative;
+}
+body {
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(14%, rgba(237,237,237,1)), color-stop(30%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(53%, rgba(255,255,255,1)), color-stop(61%, rgba(237,237,237,1)), color-stop(85%, rgba(255,255,255,1)), color-stop(94%, rgba(237,237,237,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+a:hover {
+    text-decoration:underline;
+}
+.nav {
+    position:relative;
+    top:-0.9em;
+    border-bottom: 3px solid brown;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+}
+.comapny {
+    position:relative;
+    top:2em;
+    right:3em;
+    display:inline-block;
+    border:1px solid black;
+}
+.comp {
+    width:9em;
+    border:1px solid black;
+    border-radius:5px;
+}
+.top_companies {
+    border:1px solid black;
+    border-radius:5px;
+}
+
+.browse {
+    border:1px solid black;
+    position:relative;
+    border-radius:4px;
+    display:inline-block;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+box-shadow: 0 15px 10px #777;
+top:-5em;
+}
+.browsing {
+    border-bottom:1px solid black;
+}
+.another {
+    display:inline-block;
+    position:relative;
+    bottom:18em;
+}
+.anotheri {
+    border:1px solid black;
+    position:relative;
+    border-radius:4px;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+    box-shadow: 0 15px 10px #777;
+}
+.latest_one {
+    border-bottom: 1px solid black;
+}
+.latest {
+    width:15em;
+}
+.connecting {
+    width:2em;
+    height:2em;
+}
+.connect {
+    position:relative;
+    display:inline-block;
+    top:5em;
+}
+.like {
+    width:3em;
+}
+.ending {
+    width:8em;
+    text-align:center;
+}
+.flist {
+    font-size:12px;
+    position:relative;
+    top:0.5em;
+}
+.endbar {
+    border-top:1px solid black;
+    height:2em;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+position:relative;
+top:4em;
+}
+</style>
+<script>
+function changecolor() {
+    document.getElementById("one").style.background="brown";
+}
+function changecolorreset() {
+    document.getElementById("one").style.background="none";
+}
+function changecolorseven() {
+    document.getElementById("two").style.background="brown";
+}
+function changecolorresetseven() {
+    document.getElementById("two").style.background="none";
+}
+function changecolorone() {
+    document.getElementById("three").style.background="brown";
+}
+function changecolorresetone() {
+    document.getElementById("three").style.background="none";
+}
+function changecolortwo() {
+    document.getElementById("four").style.background="brown";
+}
+function changecolorresettwo() {
+    document.getElementById("four").style.background="none";
+}
+function changecolorthree() {
+    document.getElementById("five").style.background="brown";
+}
+function changecolorresetthree() {
+    document.getElementById("five").style.background="none";
+}
+function changecolorfour() {
+    document.getElementById("six").style.background="brown";
+}
+function changecolorresetfour() {
+    document.getElementById("six").style.background="none";
+}
+function changecolorfive() {
+    document.getElementById("seven").style.background="brown";
+}
+function changecolorresetfive() {
+    document.getElementById("seven").style.background="none";
+}
+function changecolorsix() {
+    document.getElementById("eight").style.background="brown";
+}
+function changecolorresetsix() {
+    document.getElementById("eight").style.background="none";
+}
+</script>
+</body>
+</html>

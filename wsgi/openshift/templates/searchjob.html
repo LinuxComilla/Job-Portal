@@ -1,0 +1,393 @@
+{% load static %}
+<html>
+<head>
+<title>Jobs Finder-Job Search</title>
+</head>
+<body>
+<center>
+<div class="nav">
+<table>
+<tr>
+<td><div class="design" id="one"></div></td>
+<td><div class="design" id="two"></div></td>
+<td><div class="design" id="three"></div></td>
+<td><div class="design" id="four"></div></td>
+<td><div class="design" id="five"></div></td>
+<td><div class="design" id="six"></div></td>
+<td><div class="design" id="seven"></div></td>
+<td><div class="design" id="eight"></div></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="header" onmouseover="changecolor()" onmouseout="changecolorreset()"><span class="down"><a href="/">Home</a></span></td>
+<td class="headerone" onmouseover="changecolorseven()" onmouseout="changecolorresetseven()"><span class="down"><a href="/signup/">Job Seeker Login</a></span></td>
+<td class="headertwo" onmouseover="changecolorone()" onmouseout="changecolorresetone()"><span class="down"><a href="/resumeservice/">Resume Search</a></span></td>
+<td class="headerthree" onmouseover="changecolortwo()" onmouseout="changecolorresettwo()"><span class="down"><a href="/edit_profile/">Post Resume</a></span></td>
+<td class="headerfour" onmouseover="changecolorthree()" onmouseout="changecolorresetthree()"><span class="down"><a href="/searchjob/">Search Jobs</a></span></td>
+<td class="headerfive" onmouseover="changecolorfour()" onmouseout="changecolorresetfour()"><span class="down"><a href="/recruiter/">Employer Login</a></span></td>
+<td class="headersix" onmouseover="changecolorfive()" onmouseout="changecolorresetfive()"><span class="down"><a href="/postjob/">Post a Job</a></span></td>
+<td class="headerseven" onmouseover="changecolorsix()" onmouseout="changecolorresetsix()"><span class="down"><a href="/buyonline/">Buy Online</a></span></td>
+</tr>
+</table>
+</div>
+
+
+<div class="another">
+<div class="search"><img class="jobeer" src="{% static "assets/images/searchjobsonline.png" %}"/></div>
+<br/>
+<div class="inputs">
+<table>
+<form action="/findjob/all/" name="myForm" method="post">{% csrf_token %}
+<tr>
+<td>
+Search By Location:<br/>
+<select name="locationa" id="countryplace" onchange="editlocation()">
+<option value="">--Select--</option>
+<option value="India">India</option>
+<option value="US">US</option>
+</select>
+<select name="location" id="place">
+<option value="">-------------------Select-------------------</option>
+<option value="India">All India</option>
+<option value="India, Andhra Pradesh" >Andhra Pradesh</option>
+<option value="India, Assam" >Assam</option>
+<option value="India, Bihar & Jharkhand" >Bihar & Jharkhand</option>
+<option value="India, Chennai" >Chennai</option>
+<option value="India, Delhi & NCR" >Delhi & NCR</option>
+<option value="India, Gujarat" >Gujarat</option>
+<option value="India, Haryana" >Haryana</option>
+<option value="India, Himachal Pradesh" >Himachal Pradesh</option>
+<option value="India, Jammu & Kashmir" >Jammu & Kashmir</option>
+<option value="India, Karnataka" >Karnataka</option>
+<option value="India, Kerala" >Kerala</option>
+<option value="India, Kolkata" >Kolkata</option>
+<option value="India, Maharashtra & Goa" >Maharashtra & Goa</option>
+<option value="India, MP & Chattisgarh" >MP & Chattisgarh</option>
+<option value="India, Mumbai" >Mumbai</option>
+<option value="India, North East" >North East</option>
+<option value="India, Orrisa" >Odisha</option>
+<option value="India, Punjab" >Punjab</option>
+<option value="India, Rajasthan" >Rajasthan</option>
+<option value="India, Tamil Nadu" >Tamil Nadu</option>
+<option value="India, Uttar Pradesh(E)" >Uttar Pradesh(E)</option>
+<option value="India, Uttar Pradesh(W) & Uttarakhand" >Uttar Pradesh(W) & Uttarakhand</option>
+<option value="India, West Bengal & Andaman Nicobar" >West Bengal & Andaman Nicobar</option>
+<option value="US">All US</option>
+<option value="US, Alabama">Alabama</option>
+<option value="US, Alaska">Alaska</option>
+<option value="US, Arizona">Arizona</option>
+<option value="US, Arkansas">Arkansas</option>
+<option value="US, California">California</option>
+<option value="US, Colorado">Colorado</option>
+<option value="US, Connecticut">Connecticut</option>
+<option value="US, US, Delaware">Delaware</option>
+<option value="US, Florida">Florida</option>
+<option value="US, Georgia">Georgia</option>
+<option value="US, Hawaii">Hawaii</option>
+<option value="US, Idaho">Idaho</option>
+<option value="US, Illinois Indiana">Illinois Indiana</option>
+<option value="US, Iowa">Iowa</option>
+<option value="US, Kansas">Kansas</option>
+<option value="US, Kentucky">Kentucky</option>
+<option value="US, Louisiana">Louisiana</option>
+<option value="US, Maine">Maine</option>
+<option value="US, Maryland">Maryland</option> 
+<option value="US, Massachusetts">Massachusetts</option>
+<option value="US, Michigan">Michigan</option>
+<option value="US, Minnesota">Minnesota</option>
+<option value="US, Mississippi">Mississippi</option>
+<option value="US, Missouri">Missouri</option>
+<option value="US, Montana Nebraska">Montana Nebraska</option>
+<option value="US, Nevada">Nevada</option>
+<option value="US, New Hampshire">New Hampshire</option>
+<option value="US, New Jersey">New Jersey</option>
+<option value="US, New Mexico">New Mexico</option>
+<option value="US, New York">New York</option>
+<option value="US, North Carolina">North Carolina</option>
+<option value="US, North Dakota">North Dakota</option>
+<option value="US, Ohio">Ohio</option>
+<option value="US, Oklahoma">Oklahoma</option>
+<option value="US, Oregon">Oregon</option>
+<option value="US, Pennsylvania Rhode Island">Pennsylvania Rhode Island</option>
+<option value="US, South Carolina">South Carolina</option>
+<option value="US, South Dakota">South Dakota</option>
+<option value="US, Tennessee">Tennessee</option>
+<option value="US, Texas">Texas</option>
+<option value="US, Utah">Utah</option>
+<option value="US, Vermont">Vermont</option>
+<option value="US, Virginia">Virginia</option>
+<option value="US, Washington">Washington</option>
+<option value="US, West Virginia">West Virginia</option>
+<option value="US, Wisconsin">Wisconsin</option>
+<option value="US, Wyoming">Wyoming</option>
+<option value="Others">Others</option>
+</select>
+</td>
+<td>
+Search By Experience:<br/>
+<select name="minexp">
+	<option value="">----Select----</option>
+	<option value="0">Fresher</option>
+	<option value="1">1 years</option>
+	<option value="2">2 years</option>
+	<option value="3">3 years</option>
+	<option value="4">4 years</option>
+	<option value="5">5 years</option>
+	<option value="6">6 years</option>
+	<option value="7">7 years</option>
+	<option value="8">8 years</option>
+	<option value="9">9 years</option>
+	<option value="10">10 years</option>
+	<option value="11">11 years</option>
+	<option value="12">12 years</option>
+	<option value="13">13 years</option>
+	<option value="14">14 years</option>
+	<option value="15">15 years</option>
+	<option value="16">16 years</option>
+	<option value="17">17 years</option>
+	<option value="18">18 years</option>
+	<option value="19">19 years</option>
+	<option value="20">20 years</option>
+	<option value="21">21 years</option>
+	<option value="22">22 years</option>
+	<option value="23">23 years</option>
+	<option value="24">24 years</option>
+	<option value="25">25 years</option>
+	<option value="26">26 years</option>
+	<option value="27">27 years</option>
+	<option value="28">28 years</option>
+	<option value="29">29 years</option>
+	<option value="30">30+ years</option>
+	</select>
+</td>
+<td><input type="text" class="loc" name="title" placeholder="Search by Job Title" /></td>
+</tr>
+<tr>
+<td><br/><br/></td>
+</tr>
+<tr>
+<th colspan="4"><input type="submit" class="graph" value="Search" /></th>
+</tr>
+</form>
+</table>
+</div>
+</div>
+
+
+<div class="endbar">
+<table>
+<tr>
+<td class="ending"><span class="flist"><a href="#">Feedback</a></span></td>
+<td class="ending"><span class="flist"><a href="#">FAQ</a></span></td>
+<td class="ending"><span class="flist"><a href="#">About us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Contact us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Privacy Policy</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Security Advice</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Terms & Condition</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Disclaimer</a></span></td>
+</tr>
+</table>
+</div>
+
+
+</center>
+
+<style>
+.header:hover,.headerone:hover,.headertwo:hover,.headerthree:hover,.headerfour:hover,.headerfive:hover,.headersix:hover,.headerseven:hover {
+    box-shadow: 0 0 0 0 ;
+}
+.design {
+    height:0.5em;
+    background:none;
+}
+.header,.headerone,.headertwo,.headerthree,.headerfour,.headerfive,.headersix,.headerseven {
+    text-decoration:none;
+    list-style-type:none;
+    display:inline-block;
+    width: 10em;
+    font-size: 12px;
+    text-align: center;
+    border-top:1px solid black;
+    border-left:1px solid black;
+    border-right:1px solid black;
+    border-radius:5px;
+    box-shadow:0 0 5px rgba(0,0,0,0.8);
+    height:1.7em;
+    position:relative;
+}
+body {
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(14%, rgba(237,237,237,1)), color-stop(30%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(53%, rgba(255,255,255,1)), color-stop(61%, rgba(237,237,237,1)), color-stop(85%, rgba(255,255,255,1)), color-stop(94%, rgba(237,237,237,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+a:hover {
+    text-decoration:underline;
+}
+.nav {
+    position:relative;
+    top:-0.9em;
+    border-bottom: 3px solid brown;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+}
+.arrow_box {
+    position: relative;
+    background: #88b7d5;
+    border: 4px solid #c2e1f5;
+    height:1.5em;
+    width:5em;
+}
+.arrow_box:after, .arrow_box:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.arrow_box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-left-color: #88b7d5;
+    border-width: 11px;
+    margin-top: -11px;
+}
+.arrow_box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-left-color: #c2e1f5;
+    border-width: 17px;
+    margin-top: -17px;
+}
+
+.another {
+    position:relative;
+    top:10em;
+}
+.loc {
+    height: 2em;
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 50%, rgba(246,246,246,1) 74%, rgba(246,246,246,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(50%, rgba(237,237,237,1)), color-stop(74%, rgba(246,246,246,1)), color-stop(100%, rgba(246,246,246,1)));
+background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 50%, rgba(246,246,246,1) 74%, rgba(246,246,246,1) 100%);
+background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 50%, rgba(246,246,246,1) 74%, rgba(246,246,246,1) 100%);
+background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 50%, rgba(246,246,246,1) 74%, rgba(246,246,246,1) 100%);
+background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 50%, rgba(246,246,246,1) 74%, rgba(246,246,246,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0 );
+}
+.graph {
+    font-size: 1em;
+    border-radius: 5px;
+background: rgba(235,233,249,1);
+background: -moz-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(235,233,249,1)), color-stop(45%, rgba(216,208,239,1)), color-stop(54%, rgba(206,199,236,1)), color-stop(100%, rgba(193,191,234,1)));
+background: -webkit-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: -o-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: -ms-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', endColorstr='#c1bfea', GradientType=0 );
+}
+.jobeer {
+    width:12em;
+    height:6em;
+}
+.ending {
+    width:8em;
+    text-align:center;
+}
+.flist {
+    font-size:12px;
+    position:relative;
+    top:0.5em;
+}
+.endbar {
+    border-top:1px solid black;
+    height:2em;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+position:relative;
+top:23.5em;
+}
+</style>
+<script>
+function changecolor() {
+    document.getElementById("one").style.background="brown";
+}
+function changecolorreset() {
+    document.getElementById("one").style.background="none";
+}
+function changecolorseven() {
+    document.getElementById("two").style.background="brown";
+}
+function changecolorresetseven() {
+    document.getElementById("two").style.background="none";
+}
+function changecolorone() {
+    document.getElementById("three").style.background="brown";
+}
+function changecolorresetone() {
+    document.getElementById("three").style.background="none";
+}
+function changecolortwo() {
+    document.getElementById("four").style.background="brown";
+}
+function changecolorresettwo() {
+    document.getElementById("four").style.background="none";
+}
+function changecolorthree() {
+    document.getElementById("five").style.background="brown";
+}
+function changecolorresetthree() {
+    document.getElementById("five").style.background="none";
+}
+function changecolorfour() {
+    document.getElementById("six").style.background="brown";
+}
+function changecolorresetfour() {
+    document.getElementById("six").style.background="none";
+}
+function changecolorfive() {
+    document.getElementById("seven").style.background="brown";
+}
+function changecolorresetfive() {
+    document.getElementById("seven").style.background="none";
+}
+function changecolorsix() {
+    document.getElementById("eight").style.background="brown";
+}
+function changecolorresetsix() {
+    document.getElementById("eight").style.background="none";
+}
+</script>
+</body>
+</html>

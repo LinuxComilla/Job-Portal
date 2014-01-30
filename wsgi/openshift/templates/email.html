@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Job Application</title>
+</head>
+<body>
+To,<br/>
+The Manager,<br/>
+{{ company }}<br/><br/>
+Sub: Job Application for the post of {{ title|title }}<br/><br/>
+Sir, <br/>
+I would like to show my interest for your job posted at the job portal.<br/>
+{% if name %}My Name is {{ name|title }}{% if institute %} from {{ institute|title }}{% endif %}{% if passing %} with passing year {{ passing }}{% endif %}.{% endif %}<br/><br/>
+
+
+Thank you so much for your time and consideration.<br/><br/>
+
+Sincerely,<br/>
+{% if name %}{{ name }}<br/>{% endif %}
+{{ cemail }}<br/>
+</body>
+</html>

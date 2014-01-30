@@ -1,0 +1,323 @@
+<html>
+<head>
+<title>Jobs Finder-Job Details</title>
+</head>
+<body>
+<center>
+<div class="nav">
+<table>
+<tr>
+<td><div class="design" id="one"></div></td>
+<td><div class="design" id="two"></div></td>
+<td><div class="design" id="three"></div></td>
+<td><div class="design" id="four"></div></td>
+<td><div class="design" id="five"></div></td>
+<td><div class="design" id="six"></div></td>
+<td><div class="design" id="seven"></div></td>
+<td><div class="design" id="eight"></div></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="header" onmouseover="changecolor()" onmouseout="changecolorreset()"><span class="down"><a href="/">Home</a></span></td>
+<td class="headerone" onmouseover="changecolorseven()" onmouseout="changecolorresetseven()"><span class="down"><a href="/signup/">Job Seeker Login</a></span></td>
+<td class="headertwo" onmouseover="changecolorone()" onmouseout="changecolorresetone()"><span class="down"><a href="/resumeservice/">Resume Search</a></span></td>
+<td class="headerthree" onmouseover="changecolortwo()" onmouseout="changecolorresettwo()"><span class="down"><a href="/edit_profile/">Post Resume</a></span></td>
+<td class="headerfour" onmouseover="changecolorthree()" onmouseout="changecolorresetthree()"><span class="down"><a href="/searchjob/">Search Jobs</a></span></td>
+<td class="headerfive" onmouseover="changecolorfour()" onmouseout="changecolorresetfour()"><span class="down"><a href="/recruiter/">Employer Login</a></span></td>
+<td class="headersix" onmouseover="changecolorfive()" onmouseout="changecolorresetfive()"><span class="down"><a href="/postjob/">Post a Job</a></span></td>
+<td class="headerseven" onmouseover="changecolorsix()" onmouseout="changecolorresetsix()"><span class="down"><a href="/buyonline/">Buy Online</a></span></td>
+</tr>
+</table>
+</div>
+
+<div class="profilelink same"><h3><a href="/rprofile/"><button>Profile</button></a></h3></div><span class="signout same">({{ email }}) <a href="/rlogout/" style="font-weight:bold;"><button>Logout</button></a></span>
+<div>
+<div class="details animated" id="move">
+<h3><a href="/rprofile/">{{ details.company }}</a></h3>
+<h4>{{ details.email }}</h4>
+<h4>{{ details.website }}</h4>
+</div>
+</div>
+<div class="arrogant">
+<div class="another"><h3 class="postedtitle">Posted Jobs</h3></div>
+{% if jobs %}
+{% for job in jobs %}
+<div class="posted">
+<table>
+<th colspan="3" id="title"><a href="/jobs/get/{{ job.id }}"/>{{ job.title|title }}</a></th>
+<tr>
+<td class="setting" colspan="3"><center>{{ job.description|truncatewords:"5"|capfirst }}</center></td>
+</tr>
+<tr>
+<td>Industry</td><td class="setter"><center>:  </center></td><td class="setting">{{ job.industry }}</td>
+</tr>
+<tr>
+<td>Location</td><td class="setter"><center>:  </center></td><td class="setting">{{ job.location|capfirst }}</td>
+</tr>
+<tr>
+<td>Type</td><td class="setter"><center>:  </center></td><td class="setting">{{ job.jtype }}</td>
+</tr>
+</table>
+</div>
+{% endfor %}
+{% else %}
+<h3>No jobs posted yet <a href="/postjob/">  (Post a Job)</a></h3>
+{% endif %}
+</div>
+
+<div class="endbar">
+<table>
+<tr>
+<td class="ending"><span class="flist"><a href="#">Feedback</a></span></td>
+<td class="ending"><span class="flist"><a href="#">FAQ</a></span></td>
+<td class="ending"><span class="flist"><a href="#">About us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Contact us</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Privacy Policy</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Security Advice</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Terms & Condition</a></span></td>
+<td class="ending"><span class="flist"><a href="#">Disclaimer</a></span></td>
+</tr>
+</table>
+</div>
+
+
+
+</center>
+<style>
+.header:hover,.headerone:hover,.headertwo:hover,.headerthree:hover,.headerfour:hover,.headerfive:hover,.headersix:hover,.headerseven:hover {
+    box-shadow: 0 0 0 0 ;
+}
+.design {
+    height:0.5em;
+    background:none;
+}
+.header,.headerone,.headertwo,.headerthree,.headerfour,.headerfive,.headersix,.headerseven {
+    text-decoration:none;
+    list-style-type:none;
+    display:inline-block;
+    width: 10em;
+    font-size: 12px;
+    text-align: center;
+    border-top:1px solid black;
+    border-left:1px solid black;
+    border-right:1px solid black;
+    border-radius:5px;
+    box-shadow:0 0 5px rgba(0,0,0,0.8);
+    height:1.7em;
+    position:relative;
+}
+body {
+background: rgba(255,255,255,1);
+background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(14%, rgba(237,237,237,1)), color-stop(30%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(53%, rgba(255,255,255,1)), color-stop(61%, rgba(237,237,237,1)), color-stop(85%, rgba(255,255,255,1)), color-stop(94%, rgba(237,237,237,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 14%, rgba(255,255,255,1) 30%, rgba(246,246,246,1) 47%, rgba(255,255,255,1) 53%, rgba(237,237,237,1) 61%, rgba(255,255,255,1) 85%, rgba(237,237,237,1) 94%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+a:hover {
+    text-decoration:underline;
+}
+.nav {
+    position:relative;
+    top:-0.9em;
+    border-bottom: 3px solid brown;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+}
+.profilelink {
+    position: relative;
+    top:1em;
+    right: 19.5em;
+}
+.signout {
+    position: relative;
+    top: 1em;
+    left: 20em;
+}
+.same {
+    position:relative;
+    display: inline-block;
+}
+.details {
+    position: relative;
+    display:inline-block;
+    border:1px solid brown;
+    border-radius:100%;
+    top:1em;
+    background:white;
+    padding:25px;
+    right:0em;
+    left:0em;
+-webkit-box-shadow: -1px 1px 36px 1px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 1px 36px 1px rgba(0,0,0,0.75);
+box-shadow: -1px 1px 36px 1px rgba(0,0,0,0.75);
+}
+.animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}@-webkit-keyframes shake {
+	0%, 100% {-webkit-transform: translateX(0);}	10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+
+@-moz-keyframes shake {
+	0%, 100% {-moz-transform: translateX(0);}
+	10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {-moz-transform: translateX(10px);}
+}
+
+@-o-keyframes shake {
+	0%, 100% {-o-transform: translateX(0);}
+	10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {-o-transform: translateX(10px);}
+}
+
+@keyframes shake {
+	0%, 100% {transform: translateX(0);}
+	10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
+.details:hover {
+	-webkit-animation-name: shake;
+	-moz-animation-name: shake;
+	-o-animation-name: shake;
+	animation-name: shake;
+}
+.arrogant {
+    position: relative;
+    width: 63em;
+    top:3em;
+    border: 1px solid brown;
+    border-radius:5px;
+    display: inline-block;
+}
+.posted {
+    position: relative;
+    border: 1px solid brown;
+    border-radius: 5px;
+    display: inline-block;
+}
+.another {
+    position:relative;
+    top:-1.1em;
+    border-radius:5px;
+    height: 3em;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+    border-bottom: 1px dashed brown;
+}
+.postedtitle {
+    position: relative;
+    top:0.8em;
+}
+#title {
+    border-bottom: 1px solid brown;
+}
+.setting {
+    width: 19em;
+}
+.setter {
+    width:5em;
+}
+.ending {
+    width:8em;
+    text-align:center;
+}
+.flist {
+    font-size:12px;
+    position:relative;
+    top:0.5em;
+}
+.endbar {
+    border-top:1px solid black;
+    height:2em;
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+position:relative;
+top:17em;
+}
+</style>
+<script>
+function changecolor() {
+    document.getElementById("one").style.background="brown";
+}
+function changecolorreset() {
+    document.getElementById("one").style.background="none";
+}
+function changecolorseven() {
+    document.getElementById("two").style.background="brown";
+}
+function changecolorresetseven() {
+    document.getElementById("two").style.background="none";
+}
+function changecolorone() {
+    document.getElementById("three").style.background="brown";
+}
+function changecolorresetone() {
+    document.getElementById("three").style.background="none";
+}
+function changecolortwo() {
+    document.getElementById("four").style.background="brown";
+}
+function changecolorresettwo() {
+    document.getElementById("four").style.background="none";
+}
+function changecolorthree() {
+    document.getElementById("five").style.background="brown";
+}
+function changecolorresetthree() {
+    document.getElementById("five").style.background="none";
+}
+function changecolorfour() {
+    document.getElementById("six").style.background="brown";
+}
+function changecolorresetfour() {
+    document.getElementById("six").style.background="none";
+}
+function changecolorfive() {
+    document.getElementById("seven").style.background="brown";
+}
+function changecolorresetfive() {
+    document.getElementById("seven").style.background="none";
+}
+function changecolorsix() {
+    document.getElementById("eight").style.background="brown";
+}
+function changecolorresetsix() {
+    document.getElementById("eight").style.background="none";
+}
+
+</script>
+</body>
+</html>
