@@ -86,7 +86,7 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, '..', 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'app-root/repo/wsgi/openshift/static/'
+STATIC_URL = 'app-root/repo/wsgi/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
