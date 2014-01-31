@@ -56,7 +56,7 @@ def register(request):
 	q.save()
 	r.save()
 	condition = "Registration Successfull, Enter the credentials to login."
-        return render_to_response('Signup.html',{ 'cond':condition }, context_instance=RequestContext(request))
+        return render_to_response('Signup.html',{ 'condition':condition }, context_instance=RequestContext(request))
 
 def error(request):
      return render_to_response('error.html')
@@ -569,7 +569,7 @@ def sendmail(request):
     else:
 	cond = "Email id does not exists, Register Yourself first!!!"
 	request.session['remailid']=c
-        return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+        return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 
 def sendingsuccess(request):
