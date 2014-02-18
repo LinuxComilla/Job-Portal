@@ -469,11 +469,11 @@ def applied(request, articleid=1):
 	else:
 	    condition = "Login First to apply to a job"
 	    request.session['remailid']=a
-	    return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
+	    return render_to_response('Signup.html',{'condition':condition},context_instance=RequestContext(request))
     else:
 	condition = "Login First to apply to a job"
 	request.session['remailid']=a
-	return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
+	return render_to_response('Signup.html',{'condition':condition},context_instance=RequestContext(request))
 
 #####################################################################################################################################################
 
@@ -576,7 +576,7 @@ def sendingsuccess(request):
     a = 'out'
     request.session['remailid']=a
     cond = "An Activation link has been sent to your email to reset your password"
-    return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+    return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 def resetpassword(request, another="a"):
     c = 'out'
@@ -588,7 +588,7 @@ def resetpassword(request, another="a"):
     else:
         cond = "Invalid Link Entered"
 	request.session['remailid']=c
-        return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+        return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 def resettingpassword(request):
     a='out'
@@ -607,7 +607,7 @@ def changedsuccessfull(request):
     a = 'out'
     request.session['remailid']=a
     cond = "Password Changed Successfully"
-    return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+    return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 #######################################################      For Recruiter Login      ###############################################################
 
