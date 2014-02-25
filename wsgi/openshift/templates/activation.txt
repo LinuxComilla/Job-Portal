@@ -1,0 +1,7 @@
+Thanks for registering with our jobportal
+
+{{ email }} is registered on our jobportal as a JobSeeker.
+
+To verify your email address, Go to this link- http://jobportal-rragroups.rhcloud.com/verifymail/{{ encoded }}
+
+If it is not you, then go to this link - http://jobportal-rragroups.rhcloud.com/deleteaccount/{{ encoded }}

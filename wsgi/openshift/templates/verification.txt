@@ -1,0 +1,4 @@
+Thanks for registering with our jobportal
+
+To verify your email address, Go to this link- http://jobportal-rragroups.rhcloud.com/verifymail/{{ encoded }}
+

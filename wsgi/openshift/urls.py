@@ -1,10 +1,12 @@
 from django.conf.urls.defaults import patterns, include, url
-
+from django.conf import settings
+from django.conf.urls.static import static
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'article.views.home'),
     url(r'^signup/$', 'article.views.signup'),
     url(r'^register/$', 'article.views.register'),
@@ -28,11 +30,9 @@ urlpatterns = patterns('',
     url(r'^post_job/$', 'article.views.post_job'),
     url(r'^jobs/all/$', 'article.views.alljobs'),
     url(r'^jobs/get/(?P<articleid>\d+)/$','article.views.job'),
-    url(r'^admin/', include(admin.site.urls)),
     url(r'^savechanges/$', 'article.views.savechanges'),
     url(r'^searchjob/$', 'article.views.searchjob'),
     url(r'^findjob/all/$', 'article.views.findjob'),
-    url(r'^searchjobs/get/all/$', 'article.views.getsearchedjob'),
     url(r'^buyonline/$', 'article.views.buyonline'),
     url(r'^changepassword/$', 'article.views.change'),
     url(r'^processpassword/$', 'article.views.processpasswd'),
@@ -58,5 +58,16 @@ urlpatterns = patterns('',
     url(r'^jobs/gets/(?P<articleid>\d+)/$', 'article.views.jobsearch'),
     url(r'^apply/(?P<articleid>\d+)/$', 'article.views.applied'),
     url(r'^appliedsuccessfully/$', 'article.views.applysuccess'),
+    url(r'^deleteaccount/(?P<another>.*)/$', 'article.views.deleteaccount'),
+    url(r'^rdeleteaccount/(?P<another>.*)/$', 'article.views.rdeleteaccount'),
+    url(r'^verifymail/(?P<another>.*)/$', 'article.views.verifymail'),
+    url(r'^rverifymail/(?P<another>.*)/$', 'article.views.rverifymail'),
+    url(r'^appliedlist/(?P<profileid>\d+)/$', 'article.views.appliedlist'),
+    url(r'^jobs/getch/(?P<articleid>\d+)/$','article.views.jobget'),
+    url(r'^verifymailid/(?P<another>.*)/$', 'article.views.verifymailid'),
+    url(r'^resumedetails/(?P<candidateid>\d+)/$','article.views.resumedetails'),
+    url(r'^companycontact/(?P<another>.*)/$', 'article.views.companycontact'),
+    url(r'^editjob/(?P<jobid>\d+)/$','article.views.editjob'),
+    url(r'^savechangedjob/(?P<jobid>\d+)/$','article.views.savechangedjob'),
     url(r'^(?P<another>.*)/$', 'article.views.unknown'),
 )

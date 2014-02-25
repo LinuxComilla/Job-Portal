@@ -1,8 +1,7 @@
-{% load static %}
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Jobs Finder-Profile</title>
+<title>Jobs Finder-Signup</title>
 </head>
 
 <body>
@@ -41,87 +40,75 @@
 </tr>
 </table>
 </div>
-</center>
-<center>
-<span class="signout">({{ email }}) <a href="/logout/" style="font-weight:bold;"><button>Logout</button></a></span>
-<h2 style="color:blue">Your Profile</h2>
-<div><span style="color:red">{% if condition %}{{condition}}{% endif %}</span></div>
-<div class="details">
-<table style="font-size:1.2em;">
-<th colspan="3"><div id="heading_one"><span id="title">Personal Information</span></div></th>
-<tr><td><br/></td></tr>
+
+
+
+
+<div class="profilelink same"><h3><a href="/rprofile/"><button>Profile</button></a></h3></div><span class="signout same">({{ email }}) <a href="/rlogout/" style="font-weight:bold;">Logout</a></span>
+<br/>
+{% if candidate %}
+<div class="single">
+<table>
+<th colspan="2" class="singletitle">{{ candidate.name|title }}</th>
 <tr>
-<td>Name of Candidate:</td><td class="gap"></td><td class="limit">{% if profile.name %}{{ profile.name }}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Job Title:</td><td>{{ candidate.title|title }}</td>
+</tr>
+{% if candidate.company %}
+<tr>
+<td>Company:</td><td>{{ candidate.company }}</td>
+</tr>
+{% endif %}
+<tr>
+<td>Gender :</td><td>{{ candidate.gender|title }}</td>
 </tr>
 <tr>
-<td>Email id:</td><td class="gap"></td><td class="limit">{{ email }}</td>
+<td>Location :</td><td>{{ candidate.location|title }}</td>
 </tr>
 <tr>
-<td>Location:</td><td class="gap"></td><td class="limit">{% if profile.location %}{{ profile.location|title }}{% elif profile.agree == "on" %}Outside US{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Functional Area:</td><td>{{ candidate.functional }}</td>
 </tr>
 <tr>
-<td>Gender:</td><td class="gap"></td><td class="limit">{% if profile.gender %}{{ profile.gender|title }}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Sector:</td><td>{{ candidate.sector }}</td>
 </tr>
 <tr>
-<tr><td><br/></td></tr>
-<th colspan="3"><div id="heading_one"><span id="title">Current/Latest/Future Employment Details</span></th>
-<tr><td><br/></td></tr>
-<tr>
-<td>Experience:</td><td class="gap"></td><td class="limit">{% if profile.exp %}{{profile.exp}} years{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Skills:</td><td>{{ candidate.skills|title }}</td>
 </tr>
 <tr>
-<td>Job Title:</td><td class="gap"></td><td class="limit">{% if profile.title %}{{ profile.title|title }}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Experience:</td><td>{{ candidate.exp }} years</td>
 </tr>
 <tr>
-<td>Company:</td><td class="gap"></td><td class="limit">{% if profile.company %}{{profile.company}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Current Salary:</td><td>{{ candidate.minsalary }} Lacs/year</td>
 </tr>
 <tr>
-<td>Skills:</td><td class="gap"></td><td class="limit">{% if profile.skills %}{{profile.skills|title}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Qualification:</td><td>{{ candidate.qualification }}</td>
 </tr>
 <tr>
-<td>Sector:</td><td class="gap"></td><td class="limit">{% if profile.sector %}{{profile.sector}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Certification:</td><td>{{ candidate.certification }}</td>
 </tr>
 <tr>
-<td>Functional:</td><td class="gap"></td><td class="limit">{% if profile.functional %}{{profile.functional}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Education Specialization:</td><td>{{ candidate.specialization }}</td>
 </tr>
 <tr>
-<td>Salary:</td><td class="gap"></td><td class="limit">{% if profile.minsalary == 0 %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% elif profile.minsalary %}Rs {{profile.minsalary}} Lacs/Year{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
-</tr>
-<tr><td><br/></td></tr>
-<th colspan="3"><div id="heading_one"><span id="title">Educational Qualification</span></div></th>
-<tr><td><br/></td></tr>
-<tr>
-<td>Highest Qualification:</td><td class="gap"></td><td class="limit">{% if profile.qualification %}{{profile.qualification}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Institute:</td><td>{{ candidate.institute }}</td>
 </tr>
 <tr>
-<td>Education Specialization:</td><td class="gap"></td><td class="limit">{% if profile.specialization %}{{profile.specialization|title}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Job Type:</td><td>{{ candidate.jtype }}</td>
 </tr>
 <tr>
-<td>Certification Courses:</td><td class="gap"></td><td class="limit">{% if profile.certification %}{{profile.certification|title}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
+<td>Mobile Number:</td><td>{{ details.country_code }}-{{ details.mobile_no }}</td>
 </tr>
 <tr>
-<td>Institute Name:</td><td class="gap"></td><td class="limit">{% if profile.institute %}{{profile.institute|title}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
-</tr>
-<tr>
-<td>Job Type:</td><td class="gap"></td><td class="limit">{% if profile.jtype %}{{profile.jtype|title}}{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</td>
-</tr>
-<tr>
-<td>Resume:</td><td class="gap"></td><td class="limit">{% if resum.resume %}<a href="/static/assets/{{ resum.resume }}" target="blank" >Previous Resume{% else %}<span style="color:red;font-size:17px;"> Not Mentioned</span>{% endif %}</a></td>
+<td>Email:</td><td>{{ candidate.email }}{% if details.verify == "y" %}<span style="color:green">(verified)</span>{% else %}<span style="color:red">(Not Verified)</span>{% endif %}</td>
 </tr>
 </table>
 </div>
+{% endif %}
+<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
+<div><a href="/companycontact/{{ candidate.email }}"><button><span style="font-size:1.5em;"><i>Contact This Candidate</i></span></button></a></div>
 
-<div class="anodiv">
-<div id="heading_one"><span id="other">Other Links</span></div>
-<ul>
-<li style="text-align:left;"><span class="shift_one"><a href="/profile/">Profile</a></span></li>
-<li style="text-align:left;"><span class="shift_two"><a href="/edit_profile/">Edit Your Profile</a></span></li>
-<li style="text-align:left;"><span class="shift_three"><a href="/changepasswordc/">Change Your Password</a></span></li>
-<li style="text-align:left;"><span class="shift_four"><a href="/appliedlist/{{ profile.id }}/">Applied Jobs</a></span></li>
-</ul>
-</div>
-</center>
-<center>
+
+
 <div class="endbar">
 <table>
 <tr>
@@ -136,7 +123,15 @@
 </tr>
 </table>
 </div>
+
+
+
+
 </center>
+
+
+
+
 <style>
 .header:hover,.headerone:hover,.headertwo:hover,.headerthree:hover,.headerfour:hover,.headerfive:hover,.headersix:hover,.headerseven:hover {
     box-shadow: 0 0 0 0 ;
@@ -195,40 +190,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', end
     top: 1em;
     left: 22em;
 }
-.details {
+.same {
     position:relative;
-    display:inline-block;
-    padding:10px;
-    right: 1em;
+    display: inline-block;
 }
-#heading_one {
-    border-radius:3px;
-    height:2em;
-    background:#499bea;
-} 
-.anodiv {
+.profilelink {
     position: relative;
-    width: 15em;
-    display:inline-block;
-    top:-35.3em;
-    left:4.5em;
-    padding:10px;
+    top:1em;
+    right: 19.5em;
 }
-#other {
+.single {
     position: relative;
-    font-weight: bold;
-    top:0.5em;
+    top: 5em;
+    display: inline-block;
+    border: 1px solid orange;
+    border-radius: 5px;
 }
-.limit {
-    width:15em;
-}
-#title {
-    position:relative;
-    top:5px;
-    color: black;
-}
-.gap {
-    width: 5em;
+.singletitle {
+    border-bottom: 1px solid orange;
 }
 .ending {
     width:8em;
@@ -242,16 +221,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', end
 .endbar {
     border-top:1px solid black;
     height:2em;
-    background: rgba(226,226,226,1);
-    background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
-    background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-    background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-    background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
-    background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: rgba(226,226,226,1);
+background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(33%, rgba(219,219,219,1)), color-stop(51%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
-    position:relative;
-    top: 17em;
+position:relative;
+top:31.6em;
 }
 </style>
 <script>

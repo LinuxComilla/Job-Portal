@@ -35,7 +35,7 @@ class Candidate(models.Model):
     pubdate = models.DateField(default=date.today())
     
     def __unicode__(self):
-        return self.email
+	return self.email
 
 class Article(models.Model):
     email = models.EmailField()
@@ -45,10 +45,9 @@ class Article(models.Model):
     country_code = models.IntegerField()
     mobile_no = models.IntegerField()
     agree = models.TextField()
-    verify = models.CharField(max_length=1)
     
     def __unicode__(self):
-        return self.email
+	return self.email
 
 class Arctic(models.Model):
     company = models.TextField()
@@ -61,10 +60,9 @@ class Arctic(models.Model):
     country_code = models.IntegerField()
     mobile_no = models.IntegerField()
     agree = models.TextField()
-    verify = models.CharField(max_length=1)
     
     def __unicode__(self):
-        return self.email
+	return self.email
 
 class Postjob(models.Model):
     email = models.EmailField()
@@ -74,18 +72,13 @@ class Postjob(models.Model):
     functional = models.TextField()
     minexp = models.IntegerField()
     maxexp = models.IntegerField()
-    minsalary = models.FloatField(default=0.0)
-    maxsalary = models.FloatField(default=0.0)
+    minsalary = models.TextField()
+    maxsalary = models.TextField()
     location = models.TextField()
     jtype = models.CharField(max_length=20)
     qualification = models.TextField()
     
     def __unicode__(self):
-        return self.email
+	return self.email
 
-class Joblist(models.Model):
-    profileid = models.IntegerField()
-    jobid = models.IntegerField()
 
-    def __unicode__(self):
-        return self.profileid

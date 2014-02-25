@@ -1,0 +1,12 @@
+Hi,
+
+We are from {{ company.company }} and got your profile from this job portal.
+We are from {{ company.location }} and want to offer you a job after your technical interview.
+
+If you are interested in our job, then reply to this email:- {{ company.email }}
+or you can also contact us on our number:- {{ company.country_code }}-{{ company.mobile_no }}
+
+Thanking You,
+{{ company.contact }}
+{{ company.company }}
+{{ company.website }}

@@ -12,16 +12,13 @@ from article.models import Arctic
 from article.models import Postjob
 from article.models import Candidate
 from article.models import Resume
-from article.models import Joblist
 from django.template import RequestContext
 from time import time
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
-from django.core.servers.basehttp import FileWrapper
 import os
 import datetime
 import base64
-import mimetypes
 # Create your views here.
 def home(request):
     name="Sheesh"
@@ -55,22 +52,11 @@ def register(request):
     if Article.objects.filter(email = email).exists():
 	return HttpResponseRedirect('/error/')
     else:
-	plaintext = get_template('activation.txt')
-	htmly = get_template('activation.html')
-	a = email.encode('zip')
-        b = base64.b64encode(a)
-	d = Context({ 'email': email ,'encoded':b})
-	text_content = plaintext.render(d)
-	html_content = htmly.render(d)
-	msg = EmailMultiAlternatives('Registration', text_content, 'Sheesh@rragroups.com', [email])
-	msg.attach_alternative(html_content, "text/html")
-	msg.send()
 	p.save()
 	q.save()
 	r.save()
 	condition = "Registration Successfull, Enter the credentials to login."
-        return render_to_response('Signup.html',{ 'cond':condition }, context_instance=RequestContext(request))
-
+        return render_to_response('Signup.html',{ 'condition':condition }, context_instance=RequestContext(request))
 
 def error(request):
      return render_to_response('error.html')
@@ -96,9 +82,6 @@ def profile(request):
     if request.session['emailid']==a:
 	return HttpResponseRedirect('/signinerror/')
     else:
-	email = request.session['emailid']
-	a = email.encode('zip')
-        b = base64.b64encode(a)
 	details = Article.objects.get(email = request.session['emailid'])
 	try:
 	    profile = Candidate.objects.get(email = request.session['emailid'])
@@ -106,7 +89,7 @@ def profile(request):
 	except:
 	    profile =[]
 	    resum = []
-        return render_to_response('profile.html', {'details': details,'encoded':b, 'email': request.session['emailid'], 'profile':profile, 'resum':resum})
+        return render_to_response('profile.html', {'email': request.session['emailid'], 'profile':profile, 'resum':resum})
 
 def editprofile(request):
     a='out'
@@ -153,7 +136,7 @@ def savechanges(request):
 	exp=0
     p = Candidate.objects.filter(email = request.session['emailid'])
     q = Resume.objects.get(email =request.session['emailid'])
-    p.update(email=email, name=name, location=location, agree=agree, gender=gender, exp=exp, title=title, company=company, skills=skills.lower(), sector=sector, functional=functional, minsalary=minsalary, qualification=qualification, specialization=specialization.lower(), certification=certification.lower(), institute=institute.lower(), passing=passing, jtype=jtype, pubdate=datetime.date.today())
+    p.update(email=email, name=name, location=location, agree=agree, gender=gender, exp=exp, title=title.lower(), company=company, skills=skills.lower(), sector=sector, functional=functional, minsalary=minsalary, qualification=qualification, specialization=specialization.lower(), certification=certification.lower(), institute=institute.lower(), passing=passing, jtype=jtype, pubdate=datetime.date.today())
     if q.resume:
 	if resume:
 	    q.resume = resume
@@ -178,7 +161,6 @@ def logout(request):
 	condition = "Logged Out Succesfully"
 	a='out'
 	request.session['emailid'] = a
-	del request.session['emailid']
 	return render_to_response('error.html', {'condition':condition})
     else:
 	return render_to_response('unknown.html')
@@ -236,15 +218,12 @@ def profilec(request):
     else:
 	details = Article.objects.get(email = request.session['emailid'])
 	try:
-	    email = request.session['emailid']
-	    a = email.encode('zip')
-            b = base64.b64encode(a)
 	    profile = Candidate.objects.get(email = request.session['emailid'])
 	    resum = Resume.objects.get(email = request.session['emailid'])
 	except:
 	    profile =[]
 	    resume = []
-        return render_to_response('profile.html', {'details': details,'encoded':b, 'email': request.session['emailid'], 'profile':profile, 'resum':resum,'condition':condition})
+        return render_to_response('profile.html', {'email': request.session['emailid'], 'profile':profile, 'resum':resum,'condition':condition})
 
 def applysuccess(request):
     condition="Successfully Applied for the job"
@@ -253,9 +232,6 @@ def applysuccess(request):
     if request.session['emailid']==a:
 	return HttpResponseRedirect('/signinerror/')
     else:
-	email = request.session['emailid']
-	a = email.encode('zip')
-        b = base64.b64encode(a)
 	details = Article.objects.get(email = request.session['emailid'])
 	try:
 	    profile = Candidate.objects.get(email = request.session['emailid'])
@@ -263,68 +239,8 @@ def applysuccess(request):
 	except:
 	    profile =[]
 	    resume = []
-        return render_to_response('profile.html', {'details': details,'encoded':b, 'email': request.session['emailid'], 'profile':profile, 'resum':resum,'condition':condition})
+        return render_to_response('profile.html', {'email': request.session['emailid'], 'profile':profile, 'resum':resum,'condition':condition})
 
-def deleteaccount(request, another='a'):
-    b = base64.b64decode(another)
-    email = b.decode('zip')
-    a = Article.objects.get(email = email)
-    a.delete()
-    a = Candidate.objects.get(email = email)
-    a.delete()
-    a = Resume.objects.get(email = email)
-    a.delete()
-    condition = "Thanks for reporting, The account has been successfully deleted"
-    return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
-
-def verifymail(request, another):
-    condition="Successfully verified your email address"
-    a='out'
-    b = base64.b64decode(another)
-    email = b.decode('zip')
-    request.session['emailid'] = email
-    a = Article.objects.get(email = email)
-    a.verify = "y"
-    a.save()
-    request.session['remailid']=a
-    if request.session['emailid']==a:
-        return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
-    else:
-	request.session['emailid'] = email
-	details = Article.objects.get(email = request.session['emailid'])
-	try:
-	    email = request.session['emailid']
-	    a = email.encode('zip')
-            b = base64.b64encode(a)
-	    profile = Candidate.objects.get(email = request.session['emailid'])
-	    resum = Resume.objects.get(email = request.session['emailid'])
-	except:
-	    profile =[]
-	    resume = []
-        return render_to_response('profile.html', {'details': details,'encoded':b, 'email': request.session['emailid'], 'profile':profile, 'resum':resum,'condition':condition})
-
-def verifymailid(request, another):
-    a='out'
-    condition = 'An activation link has been sent'
-    conditio = 'Login first to verify your mail'
-    if request.session['emailid']==a:
-        return render_to_response('Signup.html',{'cond':conditio},context_instance=RequestContext(request))
-    else:
-	plaintext = get_template('verification.txt')
-	htmly = get_template('verification.html')
-	email = request.session['emailid']
-	d = Context({'encoded':another})
-	text_content = plaintext.render(d)
-	html_content = htmly.render(d)
-	msg = EmailMultiAlternatives('Registration', text_content, 'Sheesh@rragroups.com', [email])
-	msg.attach_alternative(html_content, "text/html")
-	msg.send()
-	z = email.encode('zip')
-        b = base64.b64encode(z)
-	details = Article.objects.get(email = request.session['emailid'])
-	profile = Candidate.objects.get(email = request.session['emailid'])
-	resum = Resume.objects.get(email = request.session['emailid'])
-	return render_to_response('profile.html', {'details': details,'encoded':b, 'email': request.session['emailid'], 'profile':profile, 'resum':resum,'condition':condition})
 def unknown(request, another=0):
      return render_to_response('unknown.html')
 
@@ -364,16 +280,6 @@ def rregister(request):
     if Arctic.objects.filter(email = email).exists():
 	return HttpResponseRedirect('/rerror/')
     else:
-	plaintext = get_template('ractivation.txt')
-	htmly = get_template('ractivation.html')
-	a = email.encode('zip')
-        b = base64.b64encode(a)
-	d = Context({ 'email': email ,'encoded':b})
-	text_content = plaintext.render(d)
-	html_content = htmly.render(d)
-	msg = EmailMultiAlternatives('Registration', text_content, 'Sheesh@rragroups.com', [email])
-	msg.attach_alternative(html_content, "text/html")
-	msg.send()
 	p.save()
         return HttpResponseRedirect('/recruiters/')
 
@@ -447,7 +353,7 @@ def post_job(request):
     location = request.POST.get('location', '')
     jtype = request.POST.get('type', '')
     qualification = request.POST.get('qualification', '')
-    p = Postjob(email = email, title = title, description = description, industry = industry, functional = functional, minexp = minexp, maxexp = maxexp, minsalary = minsalary, maxsalary = maxsalary, location = location, jtype = jtype, qualification = qualification)
+    p = Postjob(email = email, title = title.lower(), description = description, industry = industry, functional = functional, minexp = minexp, maxexp = maxexp, minsalary = minsalary, maxsalary = maxsalary, location = location.lower(), jtype = jtype, qualification = qualification)
     p.save()
     return HttpResponseRedirect('/jobs/all/')
 
@@ -520,75 +426,6 @@ def rprofilec(request):
     details = Arctic.objects.get(email = request.session['remailid'])
     return render_to_response('rprofile.html', {'email': request.session['remailid'], 'details':details, 'condition':condition})
 
-def rdeleteaccount(request, another='a'):
-    b = base64.b64decode(another)
-    email = b.decode('zip')
-    a = Arctic.objects.get(email = email)
-    a.delete()
-    a = Postjob.objects.filter(email = email)
-    a.delete()
-    condition = "Thanks for reporting, The account has been successfully deleted"
-    return render_to_response('recruiter_signup.html', {'condition':condition}, context_instance=RequestContext(request))
-
-def rverifymail(request, another='a'):
-    condition="Successfully verified your email address"
-    a='out'
-    b = base64.b64decode(another)
-    email = b.decode('zip')
-    a = Arctic.objects.get(email = email)
-    a.verify = "y"
-    a.save()
-    request.session['emailid'] = a
-    if 'remailid' in request.session:
-	if request.session['remailid']==a:
-	    return render_to_response('recruiter_signup.html', {'condition':condition}, context_instance=RequestContext(request))
-	else:
-	    request.session['remailid'] = email
-    	    details = Arctic.objects.get(email = request.session['remailid'])
-    	    return render_to_response('rprofile.html', {'email': request.session['remailid'], 'details':details, 'condition':condition})
-    else:
-	return render_to_response('recruiter_signup.html', {'condition':condition}, context_instance=RequestContext(request))
-
-def editjob(request, jobid):
-    a = 'out'
-    if 'remailid' in request.session:
-	if request.session['remailid']!=a:
-	    a = Postjob.objects.get(id = jobid)
-	    return render_to_response('editjob.html', {'profile':a, 'email':request.session['remailid']}, context_instance=RequestContext(request))
-	else:
-	    return HttpResponseRedirect('/rsigninerror/')
-    else:
-	return HttpResponseRedirect('/rsigninerror/')
-    
-def savechangedjob(request, jobid):
-    email = request.session['remailid']
-    title = request.POST.get('title', '')
-    description = request.POST.get('description', '')
-    industry = request.POST.get('industry', '')
-    functional = request.POST.get('functional', '')
-    minexp = request.POST.get('minexp', '')
-    maxexp = request.POST.get('maxexp', '')
-    minsalary = request.POST.get('minsalary', '')
-    maxsalary = request.POST.get('maxsalary', '')
-    location = request.POST.get('location', '')
-    jtype = request.POST.get('type', '')
-    qualification = request.POST.get('qualification', '')
-    b = Postjob.objects.filter(id = jobid)
-    a = 'out'
-    if 'remailid' in request.session:
-	if request.session['remailid']==a:
-	    return HttpResponseRedirect('/rsigninerror/')
-	else:
-	    b.update(email = email, title = title, description = description, industry = industry, functional = functional, minexp = minexp, maxexp = maxexp, minsalary = minsalary, maxsalary = maxsalary, location = location, jtype = jtype, qualification = qualification)
-	    jobs = Postjob.objects.all().filter(email = request.session['remailid']).order_by('-id')
-	    details = Arctic.objects.get(email = request.session['remailid'])
-	    condition = "Successfully saved the changes"
-            context = {'jobs':jobs, 'email' : request.session['remailid'], 'details':details, 'condition':condition}
-            return render_to_response('jobdetails.html', context)
-    else:
-	return HttpResponseRedirect('/rsigninerror/')
-
-
 #####################################################################################################################################################
 
 def searchjob(request):
@@ -602,7 +439,7 @@ def findjob(request):
 	c=[]
     else:
         a = Postjob.objects.filter(location__icontains = location.lower())
-        b = a.all().filter(title__icontains = title)
+        b = a.all().filter(title__icontains = title.lower())
         if not experience:
 	    experience=30
         c = b.all().exclude(minexp__gt = int(experience))
@@ -620,12 +457,9 @@ def applied(request, articleid=1):
             job = Postjob.objects.get(id = articleid)
             details = Arctic.objects.get(email = job.email)
 	    candidate = Candidate.objects.get(email = request.session['emailid'])
-	    resum = Resume.objects.get(email = request.session['emailid'])
-	    z = Joblist(profileid = candidate.id, jobid = articleid)
-	    z.save()
 	    plaintext = get_template('emaily.txt')
 	    htmly = get_template('email.html')
-	    d = Context({ 'email': job.email, 'title': job.title, 'description': job.description, 'industry':job.industry, 'functional':job.functional, 'minexp':job.minexp, 'maxexp':job.maxexp, 'minsalary':job.minsalary, 'maxsalary':job.maxsalary, 'location':job.location, 'jtype':job.jtype, 'qualification':job.qualification, 'company':details.company, 'contact':details.contact, 'website':details.website, 'location':details.location, 'name':candidate.name, 'exp':candidate.exp, 'skills':candidate.skills, 'resum':resum, 'institute':candidate.institute, 'qualification':candidate.qualification, 'passing':candidate.passing, 'cemail':request.session['emailid'] })
+	    d = Context({ 'email': job.email, 'title': job.title, 'description': job.description, 'industry':job.industry, 'functional':job.functional, 'minexp':job.minexp, 'maxexp':job.maxexp, 'minsalary':job.minsalary, 'maxsalary':job.maxsalary, 'location':job.location, 'jtype':job.jtype, 'qualification':job.qualification, 'company':details.company, 'contact':details.contact, 'website':details.website, 'location':details.location, 'name':candidate.name, 'exp':candidate.exp, 'skills':candidate.skills, 'institute':candidate.institute, 'qualification':candidate.qualification, 'passing':candidate.passing, 'cemail':request.session['emailid'] })
 	    text_content = plaintext.render(d)
 	    html_content = htmly.render(d)
 	    msg = EmailMultiAlternatives('Job Application', text_content, 'Sheesh@rragroups.com', [job.email])
@@ -635,35 +469,12 @@ def applied(request, articleid=1):
 	else:
 	    condition = "Login First to apply to a job"
 	    request.session['remailid']=a
-	    return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
+	    return render_to_response('Signup.html',{'condition':condition},context_instance=RequestContext(request))
     else:
 	condition = "Login First to apply to a job"
 	request.session['remailid']=a
-	return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
+	return render_to_response('Signup.html',{'condition':condition},context_instance=RequestContext(request))
 
-def appliedlist(request, profileid=1):
-    a = 'out'
-    b = []
-    if 'emailid' in request.session:
-	if request.session['emailid']!=a:
-	    joblist = Joblist.objects.filter(profileid = profileid)
-	    for job in joblist:
-		c = Postjob.objects.get(id = job.jobid)
-		b.append(c)
-	    return render_to_response('appliedjobs.html', {'jobs':b, 'email':request.session['emailid']})
-	else:
-	    condition = "Login First to view the jobs"
-	    request.session['remailid']=a
-	    return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
-    else:
-	condition = "Login First to view the job"
-	request.session['remailid']=a
-	return render_to_response('Signup.html',{'cond':condition},context_instance=RequestContext(request))
-
-def jobget(request, articleid = 1):
-    job = Postjob.objects.get(id=articleid)
-    details = Arctic.objects.get(email = job.email)
-    return render_to_response('jobget.html', {'job': job, 'email':request.session['emailid'], 'details': details })
 #####################################################################################################################################################
 
 def buyonline(request):
@@ -673,15 +484,7 @@ def buyonline(request):
 
 
 def resumeservice(request):
-    a = 'out'
-    if 'remailid' in request.session:
-	if request.session['remailid'] == a:
-	    return HttpResponseRedirect('/rsigninerror/')
-	else:
-    	    return render_to_response('resumesearch.html',context_instance=RequestContext(request))
-    else:
-	return HttpResponseRedirect('/rsigninerror/')
-    
+    return render_to_response('resumesearch.html',context_instance=RequestContext(request))
 
 
 def findresumes(request):
@@ -748,30 +551,8 @@ def findresumes(request):
 	w = o
     	return render_to_response('resultresume.html', {'result':w})
 
-def resumedetails(request, candidateid):
-    a = 'out'
-    if 'remailid' in request.session:
-	if request.session['remailid']!=a:
-    	    candidate = Candidate.objects.get(id = candidateid)
-	    details = Article.objects.get(email = candidate.email)
-	    return render_to_response('resume.html', {'candidate':candidate, 'email':request.session['remailid'], 'details':details})
-	else:
-    	    return HttpResponseRedirect('/rsigninerror/')
-    else:
-	return HttpResponseRedirect('/rsigninerror/')
 
-def companycontact(request, another):
-    company = Arctic.objects.get(email = request.session['remailid'])
-    plaintext = get_template('contactcandidate.txt')
-    htmly = get_template('contactcandidate.html')
-    d = Context({'company':company})
-    text_content = plaintext.render(d)
-    html_content = htmly.render(d)
-    msg = EmailMultiAlternatives('Job Offer', text_content, 'Sheesh@rragroups.com', [another])
-    msg.attach_alternative(html_content, "text/html")
-    msg.send()
-    condition = "Successfully contacted the student"
-    return render_to_response('rprofile.html', {'email': request.session['remailid'], 'details':company, 'condition':condition})
+
 ####################################################         For Jobseeker Login        ############################################################
 
 def forgot(request):
@@ -783,19 +564,19 @@ def sendmail(request):
     if Article.objects.filter(email = email).exists():
 	a = email.encode('zip')
         b = base64.b64encode(a)
-        send_mail("Job Portal-Reset Your Password","Click on the link to reset your password--  http://jobportal-rragroups.rhcloud.com/resetpassword/%s/" % b, 'Sheesh@rragroups.com', [email], fail_silently=False)
+        send_mail("Job Portal-Reset Your Password","Click on the link to reset your password--  http://rragroups-jportal.rhcloud.com/resetpassword/%s/" % b, 'Sheesh@rragroups.com', [email], fail_silently=False)
         return HttpResponseRedirect('/sendingsuccessfull/')
     else:
 	cond = "Email id does not exists, Register Yourself first!!!"
 	request.session['remailid']=c
-        return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+        return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 
 def sendingsuccess(request):
     a = 'out'
     request.session['remailid']=a
     cond = "An Activation link has been sent to your email to reset your password"
-    return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+    return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 def resetpassword(request, another="a"):
     c = 'out'
@@ -807,7 +588,7 @@ def resetpassword(request, another="a"):
     else:
         cond = "Invalid Link Entered"
 	request.session['remailid']=c
-        return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+        return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 def resettingpassword(request):
     a='out'
@@ -826,7 +607,7 @@ def changedsuccessfull(request):
     a = 'out'
     request.session['remailid']=a
     cond = "Password Changed Successfully"
-    return render_to_response('Signup.html',{'cond':cond}, context_instance=RequestContext(request))
+    return render_to_response('Signup.html',{'condition':cond}, context_instance=RequestContext(request))
 
 #######################################################      For Recruiter Login      ###############################################################
 
@@ -838,14 +619,7 @@ def rsendmail(request):
     if Arctic.objects.filter(email = email).exists():
 	a = email.encode('zip')
         b = base64.b64encode(a)
-        plaintext = get_template('resetpassword.txt')
-        htmly = get_template('resetpassword.html')
-        d = Context({'encoded':b})
-        text_content = plaintext.render(d)
-        html_content = htmly.render(d)
-        msg = EmailMultiAlternatives('Reset Your Password', text_content, 'Sheesh@rragroups.com', [email])
-        msg.attach_alternative(html_content, "text/html")
-        msg.send()
+        send_mail("Job Portal-Reset Your Password","Click on the link to reset your password--  http://rragroups-jportal.rhcloud.com/rresetpassword/%s/" % b, 'Sheesh@rragroups.com', [email], fail_silently=False)
         return HttpResponseRedirect('/rsendingsuccessfull/')
     else:
 	cond = "Email id does not exists, Register Yourself first!!!"
@@ -885,6 +659,3 @@ def rchangedsuccessfull(request):
 #####################################################################################################################################################
 def credit(request):
     return render_to_response('creditcard.html', context_instance=RequestContext(request))
-
-#####################################################################################################################################################
-

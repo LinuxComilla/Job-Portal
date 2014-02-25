@@ -1,6 +1,7 @@
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>Jobs Finder-Job Details</title>
+<title>Jobs Finder-Signup</title>
 </head>
 <body>
 <center>
@@ -39,47 +40,36 @@
 </table>
 </div>
 
-<div><div class="details animated" id="move">
-<h3><a href="/rprofile/">{{ details.company }}</a></h3>
-<h4>{{ details.email }}</h4>
-<h4>{{ details.website }}</h4>
-</div></div>
-{% if job %}
-<div class="single">
+
+<div class="profilelink same"><h3><a href="/profile/">Profile</a></h3></div><div class="signout same">({{ email }}) <a href="/logout/" style="font-weight:bold;">Logout</a></div>
+<br/>
+<div class="arrogant">
+<div class="another"><h3 class="postedtitle">Applied Jobs</h3></div>
+{% if jobs %}
+{% for job in jobs %}
+<div class="posted">
 <table>
-<th colspan="2" class="singletitle">{{ job.title }}</th>
+<th colspan="3" id="title"><a href="/jobs/getch/{{ job.id }}"/>{{ job.title|capfirst }}</a></th>
 <tr>
-<td>Description:</td><td>{{ job.description }}</td>
+<td class="setting" colspan="3"><center>{{ job.description|truncatewords:"5" }}</center></td>
 </tr>
 <tr>
-<td>Industry :</td><td>{{ job.industry }}</td>
+<td>Industry</td><td class="setter"><center>:  </center></td><td class="setting">{{ job.industry }}</td>
 </tr>
 <tr>
-<td>Functional Area :</td><td>{{ job.functional }}</td>
+<td>Location</td><td class="setter"><center>:  </center></td><td class="setting">{{ job.location|capfirst }}</td>
 </tr>
 <tr>
-<td>Location of the job:</td><td>{{ job.location }}</td>
-</tr>
-<tr>
-<td>Type:</td><td>{{ job.jtype }}</td>
-</tr>
-<tr>
-<td>Experience Required:</td><td>{{ job.minexp }} to {{ job.maxexp }}</td>
-</tr>
-<tr>
-<td>Salary Offered:</td><td>{{ job.minsalary }} to {{ job.maxsalary }}</td>
-</tr>
-<tr>
-<td>Highest Qualification Required:</td><td>{{ job.qualification }}</td>
-</tr>
-<tr>
-<td>Email:</td><td>{{ job.email }}</td>
+<td>Type</td><td class="setter"><center>:  </center></td><td class="setting">{{ job.jtype }}</td>
 </tr>
 </table>
 </div>
+{% endfor %}
+{% else %}
+<h3>No jobs applied yet <a href="/searchjob/">  (Apply for a Job)</a></h3>
 {% endif %}
+</div>
 
-<div class="apply"><a href="/apply/{{ job.id }}"><button class="anapply">Apply To This Job</button></a><br/>*Apply to a job only after completing your profile else your incomplete information is sent to company.</div>
 
 
 <div class="endbar">
@@ -156,78 +146,6 @@ background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1)
 background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
 }
-.single {
-    position: relative;
-    top: 5em;
-    display: inline-block;
-    border: 1px solid brown;
-    border-radius: 5px;
-}
-.singletitle {
-    border-bottom: 1px solid brown;
-}
-a:hover {
-    text-decoration: underline;
-}
-.details {
-    position: relative;
-    display:inline-block;
-    border:1px solid brown;
-    border-radius:100%;
-    top:1em;
-    background:white;
-    padding:25px;
-    right:0em;
-    left:0em;
--webkit-box-shadow: -1px 1px 36px 1px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 1px 36px 1px rgba(0,0,0,0.75);
-box-shadow: -1px 1px 36px 1px rgba(0,0,0,0.75);
-}
-.animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}@-webkit-keyframes shake {
-	0%, 100% {-webkit-transform: translateX(0);}	10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
-	20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
-}
-
-@-moz-keyframes shake {
-	0%, 100% {-moz-transform: translateX(0);}
-	10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-10px);}
-	20%, 40%, 60%, 80% {-moz-transform: translateX(10px);}
-}
-
-@-o-keyframes shake {
-	0%, 100% {-o-transform: translateX(0);}
-	10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-10px);}
-	20%, 40%, 60%, 80% {-o-transform: translateX(10px);}
-}
-
-@keyframes shake {
-	0%, 100% {transform: translateX(0);}
-	10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
-	20%, 40%, 60%, 80% {transform: translateX(10px);}
-}
-
-.details:hover {
-	-webkit-animation-name: shake;
-	-moz-animation-name: shake;
-	-o-animation-name: shake;
-	animation-name: shake;
-}
-.apply {
-    position:relative;
-    top:14em;
-}
-.anapply {
-background: rgba(235,233,249,1);
-background: -moz-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(235,233,249,1)), color-stop(45%, rgba(216,208,239,1)), color-stop(54%, rgba(206,199,236,1)), color-stop(100%, rgba(193,191,234,1)));
-background: -webkit-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
-background: -o-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
-background: -ms-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
-background: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', endColorstr='#c1bfea', GradientType=0 );
-font-size:1.5em;
-border-radius:5px;
-}
 .ending {
     width:8em;
     text-align:center;
@@ -249,7 +167,66 @@ background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1)
 background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 33%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
 position:relative;
-top:22em;
+top:31.6em;
+}
+.setting {
+    width: 19em;
+}
+.setter {
+    width:5em;
+}
+.signout {
+    position: relative;
+    top: 1em;
+    left: 20em;
+}
+.arrogant {
+    position: relative;
+    width: 63em;
+    top:3em;
+    border: 1px solid orange;
+    border-radius:5px;
+    display: inline-block;
+}
+.posted {
+    position: relative;
+    border: 1px solid brown;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#title {
+    border-bottom: 1px solid brown;
+}
+.another {
+    position:relative;
+    top:-1.1em;
+    border-radius:5px;
+    height: 3em;
+    background: rgba(235,233,249,1);
+background: -moz-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(235,233,249,1)), color-stop(45%, rgba(216,208,239,1)), color-stop(54%, rgba(206,199,236,1)), color-stop(100%, rgba(193,191,234,1)));
+background: -webkit-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: -o-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: -ms-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+background: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 45%, rgba(206,199,236,1) 54%, rgba(193,191,234,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', endColorstr='#c1bfea', GradientType=0 );
+}
+.postedtitle {
+    position: relative;
+    top:0.8em;
+}
+a:hover {
+    text-decoration: underline;
+}
+.same {
+    position:relative;
+    display: inline-block;
+}
+.profilelink {
+    position: relative;
+    top:1em;
+    right: 19.5em;
 }
 </style>
 <script>

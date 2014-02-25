@@ -38,7 +38,7 @@
 </tr>
 </table>
 </div>
-<div class="condition"><span style="color:red">{% block condition %}{% if condition %}{{ condition }}{% endif %}{% endblock %}</span></div>
+<div class="condition"><span style="color:red">{% block condition %}{% if cond %}{{ cond }}{% endif %}{% endblock %}</span></div>
 
 <div class="main">
 <form action="/login/" method="post" name="Form" onsubmit="return(ValidateForm())">{% csrf_token %}
