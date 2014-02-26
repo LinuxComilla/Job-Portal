@@ -1,3 +1,11 @@
+Job Portal
+==========
+
+This app is launched on openshift on this url:-
+
+http://pythonjob-portalresearch.rhcloud.com/
+
+
 Django on OpenShift
 ===================
 
