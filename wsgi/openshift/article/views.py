@@ -667,7 +667,14 @@ def jobget(request, articleid = 1):
 #####################################################################################################################################################
 
 def buyonline(request):
-    return render_to_response('buyonline.html')
+    a = 'out'
+    if 'remailid' in request.session:
+	if request.session['remailid']==a:
+	    return HttpResponseRedirect('/rsigninerror/')
+	else:
+            return render_to_response('buyonline.html')
+    else:
+	return HttpResponseRedirect('/rsigninerror/')
 
 #####################################################################################################################################################
 
